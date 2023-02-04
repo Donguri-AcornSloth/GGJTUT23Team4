@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Player
 {
@@ -29,6 +30,14 @@ namespace Player
         /// </summary>
         public float Percentage { get; private set; }
 
+        /// <summary>
+        /// ヒットポイント
+        /// </summary>
+        public float HitPoint { get; private set; } = 100; // TODO : あとでマスタから読み込むようにする
+
+        /// <summary>
+        /// 進化の形態
+        /// </summary>
         public enum EvolutionType
         {
             // なし
@@ -46,11 +55,70 @@ namespace Player
 
         public EvolutionType Type { get; private set; } = EvolutionType.None;
 
+        /// <summary>
+        /// プレイヤー状態
+        /// </summary>
+        public enum PlayerState
+        {
+            None,
+
+            /// <summary>
+            /// 初期状態
+            /// </summary>
+            Initialized,
+
+            /// <summary>
+            /// 生きている
+            /// </summary>
+            Living,
+
+            /// <summary>
+            /// 死んでいる
+            /// </summary>
+            Dead,
+        }
+
+        public PlayerState State { get; private set; } = PlayerState.None;
+
         #endregion
+
+        #region 通知
+
+        /// <summary>
+        /// プレイヤー死亡通知
+        /// </summary>
+        public UnityEvent OnDead { get; } = new();
+
+        #endregion
+
+        #region メッセージ
 
         private void Awake()
         {
             Instance = this;
         }
+
+        #endregion
+
+        #region ゲームロジック
+
+        // プレイヤー自身にダメージ与える(内部的に使う想定)
+        private void ApplyDamage(float damage)
+        {
+            if (State != PlayerState.Living)
+                return;
+
+            // 体力減らす
+            HitPoint -= damage;
+
+            if (HitPoint <= 0)
+            {
+                // 体力が尽きたら死亡状態に遷移
+                State = PlayerState.Dead;
+                OnDead?.Invoke();
+            }
+        }
+
+        #endregion
     }
 }
