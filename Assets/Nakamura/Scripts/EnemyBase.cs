@@ -41,12 +41,15 @@ public class EnemyBase : MonoBehaviour
     protected float _raderRadius;
     [SerializeField]
     protected float _turnTime = 3f;
+    [SerializeField]
+    protected float _idleTime = 3f;
 
     [SerializeField]
     protected Rigidbody2D _rigidbody = null;
 
     protected StateEnum _currentState;
     protected StateManager<ActionStateEnum> _stateManager = new StateManager<ActionStateEnum>();
+    protected Timer _idleTimer = new Timer();
     protected Timer _turnTimer = new Timer();
     protected Vector2 _moveDirection;
     protected Quaternion _targetRotation;
@@ -76,6 +79,15 @@ public class EnemyBase : MonoBehaviour
     {
         _spownGeneration = generation;
         _id = id;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (gameObject.CompareTag("Player"))
+        {
+            _stateManager.ForceStop();
+            _stateManager.AddState(ActionStateEnum.Idle);
+        }
     }
 
     /// <summary>
@@ -195,15 +207,18 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void OnStateIdleEnter()
     {
-
+        Debug.Log("Enter");
+        _idleTimer.ResetTimer(_idleTime);
     }
     protected virtual bool OnStateIdleUpdate()
     {
-        return true;
+        _idleTimer.Update();
+
+        return _idleTimer.IsTimeUp;
     }
     protected virtual void OnStateIdleExit()
     {
-
+        Debug.Log("Exit");
     }
     protected virtual void OnStateMoveEnter()
     {
