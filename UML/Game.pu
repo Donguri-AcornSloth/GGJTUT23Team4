@@ -1,0 +1,108 @@
+@startuml Game
+
+' InputSystem
+package UnityEngine.InputSystem {
+    class PlayerInput
+}
+
+' ゲーム共通
+package Common {
+    class GameManager <<Singleton>> {
+        + ChangeState(nextState : StateEnum)
+    }
+
+    interface IInitializable {
+        + Initialize()
+    }
+
+    GameManager -> IInitializable
+
+    class Timer {
+        + IsTimeUp : bool
+        + ElapsedTime : float
+
+        + Update(timeScale : float)
+        + ResetTimer()
+    }
+}
+' プレイヤー
+package Player {
+    class PlayerEvolution <<Singleton>> {
+        + State : PlayerState
+        + Level : float
+        + Type : EvolutionType
+    }
+    IInitializable <|--- PlayerEvolution
+
+    class PlayerMovement {
+        + OnMove()
+        + OnJump()
+    }
+
+    PlayerMovement -> PlayerEvolution
+    PlayerMovement ---> PlayerInput
+    PlayerMovement ---> Timer
+
+    class PlayerAnimation {
+    }
+
+    PlayerAnimation --> PlayerEvolution
+}
+
+' フィールド共通
+package Field {
+    interface IFieldObject {
+    }
+    interface IFIeldObjectGenerator {
+        + Generate()
+    }
+
+    class FieldObjectGeneratorBase <<abstract>> {
+    }
+    IFIeldObjectGenerator <|-- FieldObjectGeneratorBase
+    IInitializable <|--- FieldObjectGeneratorBase
+
+    FieldObjectGeneratorBase "1" o-- "0..*" IFieldObject
+}
+
+' 敵
+package Enemy {
+    class EnemyBase {
+    }
+    EnemyBase --|> IFieldObject
+
+    class EnemyGenerator {
+    }
+    FieldObjectGeneratorBase <|--- EnemyGenerator
+    EnemyGenerator "1" o-- "0..*" EnemyBase
+    EnemyGenerator ----> PlayerEvolution
+}
+
+' 餌
+package Feed {
+    class FeedBase {
+        + Type : FeedType
+    }
+    FeedBase --|> IFieldObject
+
+    class FeedGenerator {
+    }
+    FieldObjectGeneratorBase <|--- FeedGenerator
+    FeedGenerator "1" o-- "0..*" FeedBase
+    FeedGenerator ----> PlayerEvolution
+}
+
+' 背景・その他飾り
+package Background {
+    class BackgroundBase {
+    }
+    BackgroundBase --|> IFieldObject
+
+    class BackgroundGenerator {
+    }
+    FieldObjectGeneratorBase <|--- BackgroundGenerator
+    BackgroundGenerator "1" o-- "0..*" BackgroundBase
+    BackgroundGenerator ----> PlayerEvolution
+}
+
+@enduml
