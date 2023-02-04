@@ -9,6 +9,7 @@ package UnityEngine.InputSystem {
 package Common {
     class GameManager <<Singleton>> {
         + ChangeState(nextState : StateEnum)
+        + SetGameOver()
     }
 
     interface IInitializable {
@@ -31,6 +32,10 @@ package Player {
         + State : PlayerState
         + Level : float
         + Type : EvolutionType
+
+        + AttackValue : float
+
+        + OnDead : UnityEvent
     }
     IInitializable <|--- PlayerEvolution
 
@@ -51,6 +56,20 @@ package Player {
     }
 
     PlayerCollision -> PlayerEvolution
+
+    class PlayerEvolutionMaster {
+        + maxLevel : int
+    }
+    PlayerEvolution --> PlayerEvolutionMaster
+
+    class PlayerCamera {}
+    PlayerCamera --> PlayerEvolution
+}
+
+package UI {
+    class EvolutionGauge {
+    }
+    EvolutionGauge --> PlayerEvolution
 }
 
 ' フィールド共通
@@ -72,6 +91,11 @@ package Field {
 ' 敵
 package Enemy {
     class EnemyBase {
+        - hitPoint : float
+
+        + Type : EnemyType
+        + AttackValue : float
+        + ApplyDamage(damage : float)
     }
     EnemyBase --|> IFieldObject
 
@@ -80,12 +104,16 @@ package Enemy {
     FieldObjectGeneratorBase <|--- EnemyGenerator
     EnemyGenerator "1" o-- "0..*" EnemyBase
     EnemyGenerator ----> PlayerEvolution
+
+    EnemyGenerator --> EnemyGenerationMaster
 }
 
 ' 餌
 package Feed {
     class FeedBase {
         + Type : FeedType
+
+        + PickUp()
     }
     FeedBase --|> IFieldObject
 
@@ -93,7 +121,21 @@ package Feed {
     }
     FieldObjectGeneratorBase <|--- FeedGenerator
     FeedGenerator "1" o-- "0..*" FeedBase
-    FeedGenerator ----> PlayerEvolution
+
+    class FeedGenerationMasterRow {
+        + level : int
+        + maxCount : int
+        + frequency : float
+    }
+
+    class FieldGenerationMaster {
+    }
+    FieldGenerationMaster "1" *-- "0..*" FeedGenerationMasterRow
+
+    FeedGenerator --> FieldGenerationMaster
+
+
+
 }
 
 ' 背景・その他飾り
@@ -107,6 +149,8 @@ package Background {
     FieldObjectGeneratorBase <|--- BackgroundGenerator
     BackgroundGenerator "1" o-- "0..*" BackgroundBase
     BackgroundGenerator ----> PlayerEvolution
+
+    BackgroundGenerator --> BackgroundGenerationMaster
 }
 
 FeedBase <-- PlayerCollision
