@@ -7,17 +7,8 @@ namespace Player
     public class PlayerEvolution : MonoBehaviour, IInitialize
     {
         [SerializeField] private PlayerEvolutionMaster _master;
-        
+
         public static PlayerEvolution Instance { get; private set; }
-
-        #region 初期化
-
-        public void Initialize()
-        {
-            // TODO : 初期化処理などを実装していく
-        }
-
-        #endregion
 
         #region パラメータ
 
@@ -87,6 +78,11 @@ namespace Player
         #region 通知
 
         /// <summary>
+        /// ゲームプレイ開始通知
+        /// </summary>
+        public UnityEvent<PlayerEvolutionMaster.Row> OnStarted { get; } = new();
+
+        /// <summary>
         /// プレイヤー死亡通知
         /// </summary>
         public UnityEvent OnDead { get; } = new();
@@ -103,6 +99,18 @@ namespace Player
         #endregion
 
         #region ゲームロジック
+
+        /// <summary>
+        /// ゲーム開始
+        /// </summary>
+        public void Initialize()
+        {
+            // 生きている状態にする
+            State = PlayerState.Living;
+
+            // 最初は1段階目
+            OnStarted?.Invoke(_master._rows[0]);
+        }
 
         // プレイヤー自身にダメージ与える(内部的に使う想定)
         private void ApplyDamage(float damage)
