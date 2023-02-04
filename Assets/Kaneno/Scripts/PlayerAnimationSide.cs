@@ -19,11 +19,14 @@ namespace Player
             {
                 // 左右の振り向き
                 var dir = Vector2.Dot(delta, Vector2.right);
-                dir = Mathf.Sign(dir);
 
-                if (_flipX) dir = -dir;
+                if (!Mathf.Approximately(dir, 0))
+                {
+                    dir = Mathf.Sign(dir);
+                    if (_flipX) dir = -dir;
+                    _body.localScale = new Vector3(dir, 1, 1);
 
-                _body.localScale = new Vector3(dir, 1, 1);
+                }
 
                 // var angle = Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg;
                 //
