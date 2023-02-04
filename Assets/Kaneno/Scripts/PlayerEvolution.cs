@@ -139,7 +139,7 @@ namespace Player
         // TODO : 引数に餌オブジェクトを渡せるようにする
         public void EatFeed()
         {
-            Percentage += 0.1f;
+            Percentage += 0.4f;
 
             if (Percentage >= 1)
             {
@@ -147,6 +147,7 @@ namespace Player
                 {
                     // レベルアップ処理
                     Level++;
+                    Percentage = 0;
                     OnLevelChanged?.Invoke(Level);
                 }
             }

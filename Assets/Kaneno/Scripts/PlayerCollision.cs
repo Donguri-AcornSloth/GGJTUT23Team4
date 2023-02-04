@@ -16,6 +16,8 @@ namespace Player
             if (feed != null)
             {
                 feed.PickUp();
+                
+                PlayerEvolution.Instance.EatFeed();
             }
         }
     }
