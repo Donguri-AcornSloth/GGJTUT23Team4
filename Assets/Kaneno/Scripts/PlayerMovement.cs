@@ -20,6 +20,7 @@ namespace Player
         private void Awake()
         {
             // 形態に応じた速さを反映する（イベント登録）
+            PlayerEvolution.Instance.OnEvolution.AddListener(row => _speed = row._movementSpeed);
         }
 
         private void Update()
