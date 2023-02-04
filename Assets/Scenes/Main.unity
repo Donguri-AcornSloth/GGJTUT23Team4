@@ -707,11 +707,11 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4632073601610744731, guid: 113d438a7ff11d1468ee3617e8d6e916, type: 3}
-      propertyPath: m_UsedByEffector
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7435244321599863124, guid: 113d438a7ff11d1468ee3617e8d6e916, type: 3}
-      propertyPath: m_UsedByEffector
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7594335976328285807, guid: 113d438a7ff11d1468ee3617e8d6e916, type: 3}
