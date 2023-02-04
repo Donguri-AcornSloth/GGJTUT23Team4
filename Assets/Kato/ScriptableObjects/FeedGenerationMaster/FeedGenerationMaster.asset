@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dfc560d0789a02479e7ad28247ae0b6, type: 3}
   m_Name: FeedGenerationMaster
   m_EditorClassIdentifier: 
-  FGMRows: []
+  FGMRows:
+  - {fileID: 11400000, guid: 2879f02fa2a781e4c947264ee86cb87f, type: 2}
+  - {fileID: 11400000, guid: d2d5b7a9c0b3a5e43beaa182bb06d61d, type: 2}
+  - {fileID: 11400000, guid: f59135578c15b1e4492cdb81ecf456b2, type: 2}

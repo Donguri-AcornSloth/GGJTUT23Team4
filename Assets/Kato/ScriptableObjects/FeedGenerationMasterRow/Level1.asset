@@ -16,3 +16,6 @@ MonoBehaviour:
   maxFeeds: 100
   repopNum: 30
   freqency: 10
+  generatingFeeds:
+  - {fileID: 0}
+  - {fileID: 0}
