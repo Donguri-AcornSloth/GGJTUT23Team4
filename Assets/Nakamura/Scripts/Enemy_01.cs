@@ -16,7 +16,6 @@ public class Enemy_01 : EnemyBase
     void Start()
     {
         DefineState();
-        _nextCourse = new Vector3(0, 0, Random.Range(0, 360));
         ChangeState(StateEnum.Move);
     }
 
