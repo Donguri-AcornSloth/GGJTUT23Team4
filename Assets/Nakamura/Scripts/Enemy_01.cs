@@ -15,20 +15,16 @@ public class Enemy_01 : EnemyBase
     // Start is called before the first frame update
     void Start()
     {
+        SetPlayer();
         DefineState();
         ChangeState(StateEnum.Move);
-    }
-
-    private void OnEnable()
-    {
-        Debug.Log("ê∂ê¨Ç≥ÇÍÇΩ");
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        SetPlayer();
         UpdateState();
+        DeathspownTimerUpdate();
     }
 
     protected override void SelectActionState()
