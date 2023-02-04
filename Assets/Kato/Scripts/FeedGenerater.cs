@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
-public class FeedGenerater : MonoBehaviour
+public class FeedGenerater : MonoBehaviour, IInitialize
 {
     [SerializeField]
     private List<GameObject> feeds; //ê∂ê¨Ç∑ÇÈâaÇÃÉäÉXÉg
 
+    public List<GameObject> generatedFeeds;
+
+    public void Initialize()
+    {
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +29,6 @@ public class FeedGenerater : MonoBehaviour
     private void FGenerate()
     {
         int feedMode = (int)Random.Range(0, 2);
-        //GameObject feed = Instantiate(feeds[feedMode], )
+        GameObject feed = Instantiate(feeds[feedMode], )
     }
 }

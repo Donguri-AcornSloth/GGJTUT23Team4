@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.Events;
 
-public class BackGroundGenerater : BackGroundBase
+public class BackGroundGenerater : BackGroundBase, IInitialize
 {
     [SerializeField]
     private int evolStage; //ÅV‚Ìi‰»’iŠK
@@ -23,8 +23,7 @@ public class BackGroundGenerater : BackGroundBase
     private ColorGrading colorGrading;
     private DepthOfField depthOfField;
 
-    //‰Šú‰»ˆ—
-    private void Init()
+    public void Initialize()
     {
         evolStage = 0;
         beforeEvolStage = 0;
@@ -42,8 +41,7 @@ public class BackGroundGenerater : BackGroundBase
     // Start is called before the first frame update
     void Start()
     {
-        Init();
-        BackGroundGenerate();
+        PlayerEvolution.Instance.OnDead.AddListener(BackGroundGenerate); 
     }
 
     // Update is called once per frame
