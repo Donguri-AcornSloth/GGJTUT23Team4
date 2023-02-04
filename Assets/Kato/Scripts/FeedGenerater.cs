@@ -73,6 +73,7 @@ public class FeedGenerater : MonoBehaviour, IInitialize
         Vector3 generatePos = pos + playerPos;
         GameObject feed = Instantiate(FGM.FGMRows[level].generatingFeeds[feedMode]);
         feed.transform.position = generatePos;
+        feed.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0.0f, 360.0f));
         generatedFeeds.Add(feed);
     }
 

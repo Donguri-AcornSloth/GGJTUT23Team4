@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75b62995d83fb046b0623ba0c521493, type: 3}
   m_Name: FGLevel3
   m_EditorClassIdentifier: 
-  level: 1
+  level: 2
   maxFeeds: 200
   repopNum: 40
   freqency: 1
