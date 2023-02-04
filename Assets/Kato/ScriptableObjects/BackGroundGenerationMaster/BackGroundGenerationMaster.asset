@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f9761d8954a9f4e980cd484c9f4fc1, type: 3}
+  m_Name: BackGroundGenerationMaster
+  m_EditorClassIdentifier: 
+  BGGMRows:
+  - {fileID: 11400000, guid: ecfe6c04e877a794993f246b8d26db52, type: 2}
+  - {fileID: 11400000, guid: f4667a9f0608f2641b34e702f9dd16e0, type: 2}
+  - {fileID: 11400000, guid: 7b65f5460f576524eaa1cea1ae0b5675, type: 2}
