@@ -17,7 +17,7 @@ MonoBehaviour:
   repopNum: 40
   freqency: 1
   generatingFeeds:
-  - {fileID: 7487336257200857909, guid: cc847f8f2ed65c24986f1914aabea4e1, type: 3}
-  - {fileID: 7487336257200857909, guid: cc847f8f2ed65c24986f1914aabea4e1, type: 3}
+  - {fileID: 7487336257200857909, guid: 4781c5219bc85564387f090edfb940a5, type: 3}
+  - {fileID: 7487336257200857909, guid: 4781c5219bc85564387f090edfb940a5, type: 3}
   - {fileID: 7877000931959795072, guid: 2517af35c7f1d6045937125abf96b4bb, type: 3}
   - {fileID: 7877000931959795072, guid: 7450baccb97f2fa44899ab0da46807bd, type: 3}
