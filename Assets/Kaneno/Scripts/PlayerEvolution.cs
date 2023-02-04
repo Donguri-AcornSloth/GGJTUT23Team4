@@ -180,8 +180,8 @@ namespace Player
         {
             // TODO : 後からパラメータ戻す
             // _feedPointCarnivorous += 1;
-            _feedPointCarnivorous += 30;
-            // _feedPointHerbivore += 30;
+            _feedPointCarnivorous += 15;
+            _feedPointHerbivore += 15;
 
             if (Percentage >= 1)
             {
@@ -192,7 +192,7 @@ namespace Player
 
                     OnLevelChanged?.Invoke(Level);
 
-                    var rate = _feedPointCarnivorous / _nextFeedPoint;
+                    var rate = _feedPointCarnivorous / FeedPoint;
                     print($"肉食の餌割合 : {rate}");
 
                     var row = _master.GetRow(_evolutionID);

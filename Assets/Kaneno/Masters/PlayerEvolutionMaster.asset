@@ -48,9 +48,9 @@ MonoBehaviour:
     _nextFeedPoint: 100
     _movementSpeed: 1.2
     _nextEvolutionPaths:
-    - _carnivorousRateThreshold: 0
+    - _carnivorousRateThreshold: 0.6
       _nextID: 4
-    - _carnivorousRateThreshold: 0
+    - _carnivorousRateThreshold: 0.4
       _nextID: 5
     - _carnivorousRateThreshold: 0
       _nextID: 6
@@ -61,20 +61,62 @@ MonoBehaviour:
     _hitPoint: 1
     _nextFeedPoint: 150
     _movementSpeed: 0.8
-    _nextEvolutionPaths: []
+    _nextEvolutionPaths:
+    - _carnivorousRateThreshold: 0.7
+      _nextID: 7
+    - _carnivorousRateThreshold: 0.3
+      _nextID: 8
+    - _carnivorousRateThreshold: 0.3
+      _nextID: 9
   - _name: "3\u6BB5\u968E\u76EE\uFF08\u96D1\u98DF\uFF09"
-    _id: 4
+    _id: 5
     _type: 3
     _attackValue: 0
     _hitPoint: 1
     _nextFeedPoint: 150
     _movementSpeed: 1
-    _nextEvolutionPaths: []
+    _nextEvolutionPaths:
+    - _carnivorousRateThreshold: 0.7
+      _nextID: 7
+    - _carnivorousRateThreshold: 0.3
+      _nextID: 8
+    - _carnivorousRateThreshold: 0.3
+      _nextID: 9
   - _name: "3\u6BB5\u968E\u76EE\uFF08\u8349\u98DF\uFF09"
-    _id: 4
+    _id: 6
     _type: 1
     _attackValue: 0
-    _hitPoint: 0
+    _hitPoint: 1
     _nextFeedPoint: 150
     _movementSpeed: 1.5
+    _nextEvolutionPaths:
+    - _carnivorousRateThreshold: 0.7
+      _nextID: 7
+    - _carnivorousRateThreshold: 0.3
+      _nextID: 8
+    - _carnivorousRateThreshold: 0.3
+      _nextID: 9
+  - _name: "4\u6BB5\u968E\u76EE\uFF08\u8089\u98DF\uFF09"
+    _id: 7
+    _type: 2
+    _attackValue: 0
+    _hitPoint: 1
+    _nextFeedPoint: 200
+    _movementSpeed: 0.7
+    _nextEvolutionPaths: []
+  - _name: "4\u6BB5\u968E\u76EE\uFF08\u96D1\u98DF\uFF09"
+    _id: 8
+    _type: 3
+    _attackValue: 0
+    _hitPoint: 1
+    _nextFeedPoint: 200
+    _movementSpeed: 1.2
+    _nextEvolutionPaths: []
+  - _name: "4\u6BB5\u968E\u76EE\uFF08\u8349\u98DF\uFF09"
+    _id: 8
+    _type: 1
+    _attackValue: 0
+    _hitPoint: 1
+    _nextFeedPoint: 200
+    _movementSpeed: 1.7
     _nextEvolutionPaths: []
