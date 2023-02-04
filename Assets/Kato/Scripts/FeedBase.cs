@@ -5,21 +5,21 @@ using static Unity.VisualScripting.Dependencies.Sqlite.SQLite3;
 
 public class FeedBase : MonoBehaviour
 {
-    [SerializeField, Tooltip("‰a‚Ìƒ^ƒCƒv(‘‚©“÷‚©)")]
+    [SerializeField, Tooltip("é¤Œã®ã‚¿ã‚¤ãƒ—(è‰ã‹è‚‰ã‹)")]
     protected FeedType _feedType;
-    [SerializeField, Tooltip("‰a‚Ì“Å‚Ì—L–³")]
+    [SerializeField, Tooltip("é¤Œã®æ¯’ã®æœ‰ç„¡")]
     protected FeedPoison _feedPoison;
 
     protected enum FeedType
     {
-        ‘, //‘
-        “÷, //“÷
+        è‰, //è‰
+        è‚‰, //è‚‰
     }
 
     protected enum FeedPoison
     {
-        “Å‚ ‚è, //“Å‚ ‚è
-        “Å‚È‚µ, //“Å‚È‚µ
+        æ¯’ã‚ã‚Š, //æ¯’ã‚ã‚Š
+        æ¯’ãªã—, //æ¯’ãªã—
     }
 
     // Start is called before the first frame update
