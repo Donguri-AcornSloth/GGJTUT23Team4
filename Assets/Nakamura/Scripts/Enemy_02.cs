@@ -52,19 +52,15 @@ public class Enemy_02 : EnemyBase
     protected override void OnStateMoveEnter()
     {
         _moveTimer.ResetTimer(_moveTime);
-        float x = Random.Range(-1, 1);
-        float y = Random.Range(-1, 1);
-        _moveDirection = new Vector2(x, y);
+        _moveDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         Debug.Log(_moveDirection);
         _moveDirection.Normalize();
         if(_moveDirection.x > 0)
         {
-            Debug.Log("âE");
             _sprite.transform.Rotate(0, 180, 0);
         }
         else
         {
-            Debug.Log("ç∂");
             _sprite.transform.Rotate(0, 0, 0);
         }
     }
