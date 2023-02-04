@@ -16,19 +16,20 @@ public class ValueList
     }
 }
 
-public class BackGroundBase : MonoBehaviour, IInitialize
+public class BackGroundBase : MonoBehaviour
 {
     public List<ValueList> BGLists = new List<ValueList>(); //背景として生成するオブジェクトのリスト
     [SerializeField]
     protected List<Color> BGColors = new List<Color>(); //背景の色のリスト
 
     [SerializeField]
+    protected GameManager gameManager;
+
+    [SerializeField]
     protected Camera cam; //カメラ
 
     [SerializeField]
     protected float BGChangeTime; //背景が切り替わるフレーム数
-
-    
 
     // Start is called before the first frame update
     void Start()
