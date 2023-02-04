@@ -136,8 +136,20 @@ namespace Player
         }
         
         // 餌を食べる
+        // TODO : 引数に餌オブジェクトを渡せるようにする
         public void EatFeed()
         {
+            Percentage += 0.1f;
+
+            if (Percentage >= 1)
+            {
+                if (Level < _master._maxLevel)
+                {
+                    // レベルアップ処理
+                    Level++;
+                    OnLevelChanged?.Invoke(Level);
+                }
+            }
         }
 
         #endregion
