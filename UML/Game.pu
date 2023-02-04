@@ -47,6 +47,11 @@ package Player {
     }
 
     PlayerAnimation --> PlayerEvolution
+
+    class PlayerCollision {
+    }
+
+    PlayerCollision -> PlayerEvolution
 }
 
 ' フィールド共通
@@ -104,5 +109,8 @@ package Background {
     BackgroundGenerator "1" o-- "0..*" BackgroundBase
     BackgroundGenerator ----> PlayerEvolution
 }
+
+FeedBase <-- PlayerCollision
+EnemyBase <-- PlayerCollision
 
 @enduml
