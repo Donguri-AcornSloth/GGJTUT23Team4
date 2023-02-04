@@ -16,7 +16,7 @@ namespace Player
         public struct NextEvolutionPath
         {
             // 肉食側に進化が必要な割合の閾値
-            [Range(0, 1)] public float _carnivorousPercentageThreshold;
+            [Range(0, 1)] public float _carnivorousRateThreshold;
 
             // 次の進化レコードID
             public int _nextID;
@@ -41,5 +41,12 @@ namespace Player
         }
 
         public Row[] _rows;
+
+        /// <summary>
+        /// レコード取得
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Row GetRow(int id) => Array.Find(_rows, x => x._id == id);
     }
 }

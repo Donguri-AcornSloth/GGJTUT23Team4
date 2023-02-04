@@ -34,6 +34,9 @@ namespace Player
         /// </summary>
         public float HitPoint { get; private set; } = 100; // TODO : あとでマスタから読み込むようにする
 
+        // 現在の形態ID
+        private int _evolutionID;
+
         // 肉食の餌ポイント
         private float _feedPointCarnivorous;
 
@@ -95,12 +98,17 @@ namespace Player
         /// <summary>
         /// ゲームプレイ開始通知
         /// </summary>
-        public UnityEvent<PlayerEvolutionMaster.Row> OnStarted { get; } = new();
+        public UnityEvent OnStarted { get; } = new();
 
         /// <summary>
         /// レベルが変わった通知
         /// </summary>
         public UnityEvent<int> OnLevelChanged { get; } = new();
+
+        /// <summary>
+        /// 進化したことを知らせる通知
+        /// </summary>
+        public UnityEvent<PlayerEvolutionMaster.Row> OnEvolution { get; } = new();
 
         /// <summary>
         /// プレイヤー死亡通知
@@ -130,16 +138,24 @@ namespace Player
 
             // 最初は1段階目
             SetEvolution(1);
+
+            OnStarted?.Invoke();
         }
 
         // 進化の段階指定
         private void SetEvolution(int id)
         {
+            print($"次の進化ID : {id}");
+
             var row = Array.Find(_master._rows, x => x._id == id);
 
+            _evolutionID = row._id;
             _nextFeedPoint = row._nextFeedPoint;
 
-            OnStarted?.Invoke(row);
+            _feedPointCarnivorous = 0;
+            _feedPointHerbivore = 0;
+
+            OnEvolution?.Invoke(row);
         }
 
         // プレイヤー自身にダメージ与える(内部的に使う想定)
@@ -160,13 +176,12 @@ namespace Player
         }
 
         // 餌を食べる
-        // TODO : 引数に餌オブジェクトを渡せるようにする
         public void EatFeed(FeedBase feed)
         {
             // TODO : 後からパラメータ戻す
             // _feedPointCarnivorous += 1;
             _feedPointCarnivorous += 30;
-            print($"Percentage = {Percentage}");
+            // _feedPointHerbivore += 30;
 
             if (Percentage >= 1)
             {
@@ -175,10 +190,23 @@ namespace Player
                     // レベルアップ処理
                     Level++;
 
-                    _feedPointCarnivorous = 0;
-                    _feedPointHerbivore = 0;
-
                     OnLevelChanged?.Invoke(Level);
+
+                    var rate = _feedPointCarnivorous / _nextFeedPoint;
+                    print($"肉食の餌割合 : {rate}");
+
+                    var row = _master.GetRow(_evolutionID);
+                    for (var i = 0; i < row._nextEvolutionPaths.Length; i++)
+                    {
+                        var path = row._nextEvolutionPaths[i];
+                        if (path._carnivorousRateThreshold <= rate)
+                        {
+                            if (path._nextID <= 0) continue;
+
+                            SetEvolution(path._nextID);
+                            break;
+                        }
+                    }
                 }
             }
         }
