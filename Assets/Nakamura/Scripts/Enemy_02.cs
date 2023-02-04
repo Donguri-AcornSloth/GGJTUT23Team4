@@ -10,6 +10,14 @@ public class Enemy_02 : EnemyBase
     private float _moveSpeed = 1;
     [SerializeField]
     private float _moveTime = 3;
+    [SerializeField]
+    private float _turnSpeed = 1;
+    [SerializeField]
+    private float _chaseSpeed = 2;
+    [SerializeField]
+    private float _chaseTurnSpeed = 1;
+    [SerializeField]
+    private GameObject _sprite;
 
     private Timer _moveTimer = new Timer();
 
@@ -24,7 +32,7 @@ public class Enemy_02 : EnemyBase
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(InCircle(transform.position, _player.gameObject.transform.position, _raderRadius))
+        if(InCircle(_player.gameObject.transform.position, _raderRadius))
         {
             if (_stateManager.CurrentStateType == ActionStateEnum.Chase) return;
 
@@ -38,29 +46,57 @@ public class Enemy_02 : EnemyBase
 
     protected override void SelectActionState()
     {
-        _stateManager.AddState(ActionStateEnum.Turn);
+        //_stateManager.AddState(ActionStateEnum.Turn);
         _stateManager.AddState(ActionStateEnum.Move);
     }
     protected override void OnStateMoveEnter()
     {
         _moveTimer.ResetTimer(_moveTime);
+        float x = Random.Range(-1, 1);
+        float y = Random.Range(-1, 1);
+        _moveDirection = new Vector2(x, y);
+        Debug.Log(_moveDirection);
+        _moveDirection.Normalize();
+        if(_moveDirection.x > 0)
+        {
+            Debug.Log("右");
+            _sprite.transform.Rotate(0, 180, 0);
+        }
+        else
+        {
+            Debug.Log("左");
+            _sprite.transform.Rotate(0, 0, 0);
+        }
     }
     protected override bool OnStateMoveUpdate()
     {
-        transform.position += transform.up * _moveSpeed * Time.deltaTime;
+        _rigidbody.velocity = _moveDirection * _moveSpeed;
 
         _moveTimer.Update();
 
         return _moveTimer.IsTimeUp;
     }
-    protected override void OnStateTurnEnter()
+    protected override bool OnStateChaseUpdate()
     {
-        _turnTimer.ResetTimer(_turnTime);
-        _turnRate = 0;
+        //これをTurnUpdateに書くとプレイヤーの方向を向き続ける
+        /**
+        var turnDirection = _player.transform.position - transform.position;
+        turnDirection.Normalize();
+        Quaternion quaternion = Quaternion.LookRotation(turnDirection, Vector3.forward);
+        var offsetRotation = Quaternion.FromToRotation(Vector3.up, Vector3.forward);
+        _turnRate = Mathf.Clamp01(_turnTimer.ElapsedTime / _turnTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, quaternion * offsetRotation, _turnRate);
+        **/
+        /**
+        var turnDirection = _player.transform.position - transform.position;
+        turnDirection.z = 0;
 
-        _turnTimer.ResetTimer(_turnTime);
-        _turnRate = 0;
+        Quaternion quaternion = Quaternion.LookRotation(turnDirection, Vector3.forward);
+        var offsetRotation = Quaternion.FromToRotation(Vector3.up, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, quaternion * offsetRotation, _chaseTurnSpeed);
 
-        _targetRotation = Quaternion.AngleAxis(Vector3.Angle(_player.gameObject.transform.position, gameObject.transform.position), Vector3.forward) * transform.rotation;
+        transform.position += transform.up * _chaseSpeed * Time.deltaTime;
+        **/
+        return InCircle(_player.gameObject.transform.position, _raderRadius);
     }
 }

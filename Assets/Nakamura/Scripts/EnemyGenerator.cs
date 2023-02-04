@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static Cinemachine.DocumentationSortingAttribute;
 
-public class EnemyGenerator : MonoBehaviour
+public class EnemyGenerator : MonoBehaviour, IInitialize
 {
     [SerializeField]
     private List<GameObject> _firstGenerationEnemyPfList = new List<GameObject>();
@@ -46,6 +47,7 @@ public class EnemyGenerator : MonoBehaviour
     void Start()
     {
         _intervalTimer.ResetTimer(_spownInterval);
+        PlayerEvolution.Instance.OnLevelChanged.AddListener(EvolutionEvent);
     }
 
     // Update is called once per frame
@@ -158,6 +160,40 @@ public class EnemyGenerator : MonoBehaviour
         }
     }
 
+    public void EvolutionEvent(int level)
+    {
+        switch (level)
+        {
+            case 1:
+                {
+                    foreach(var enemy in _firstGenerationEnemyList)
+                    {
+                        Destroy(enemy.gameObject);
+                    }
+                    _firstGenerationEnemyList.Clear();
+                }
+                break;
+            case 2:
+                {
+                    foreach (var enemy in _secondGenerationEnemyList)
+                    {
+                        Destroy(enemy.gameObject);
+                    }
+                    _secondGenerationEnemyList.Clear();
+                }
+                break;
+            case 3:
+                {
+                    foreach (var enemy in _thirdGenerationEnemyList)
+                    {
+                        Destroy(enemy.gameObject);
+                    }
+                    _thirdGenerationEnemyList.Clear();
+                }
+                break;
+        }
+    }
+
     private Vector3 GetRandomPos()
     {
         var angle = Random.Range(0, 360);
@@ -166,5 +202,44 @@ public class EnemyGenerator : MonoBehaviour
         var px = Mathf.Cos(rad) * radius + GameManager.Instance.Player.transform.position.x;
         var py = Mathf.Sin(rad) * radius + GameManager.Instance.Player.transform.position.y;
         return new Vector3(px, py, 0);
+    }
+
+    public void Initialize()
+    {
+        _spownCount = 0;
+        _intervalTimer.ResetTimer(_spownInterval);
+        for(int i = 0; i < 3; i++)
+        {
+            switch (i)
+            {
+                case 1:
+                    {
+                        foreach (var enemy in _firstGenerationEnemyList)
+                        {
+                            Destroy(enemy.gameObject);
+                        }
+                        _firstGenerationEnemyList.Clear();
+                    }
+                    break;
+                case 2:
+                    {
+                        foreach (var enemy in _secondGenerationEnemyList)
+                        {
+                            Destroy(enemy.gameObject);
+                        }
+                        _secondGenerationEnemyList.Clear();
+                    }
+                    break;
+                case 3:
+                    {
+                        foreach (var enemy in _thirdGenerationEnemyList)
+                        {
+                            Destroy(enemy.gameObject);
+                        }
+                        _thirdGenerationEnemyList.Clear();
+                    }
+                    break;
+            }
+        }
     }
 }

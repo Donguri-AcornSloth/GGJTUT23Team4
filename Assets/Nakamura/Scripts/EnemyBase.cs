@@ -48,7 +48,7 @@ public class EnemyBase : MonoBehaviour
     protected StateEnum _currentState;
     protected StateManager<ActionStateEnum> _stateManager = new StateManager<ActionStateEnum>();
     protected Timer _turnTimer = new Timer();
-    protected float _nextAngle;
+    protected Vector2 _moveDirection;
     protected Quaternion _targetRotation;
     protected float _turnRate = 0;
     protected PlayerMovement _player;
@@ -85,19 +85,19 @@ public class EnemyBase : MonoBehaviour
     /// <param name="targetPos"></param>
     /// <param name="radius"></param>
     /// <returns></returns>
-    protected bool InCircle(Vector2 myPos, Vector2 targetPos, float radius)
+    protected bool InCircle(Vector2 targetPos, float radius)
     {
         var sum = 0f;
         for(var i = 0; i < 2; i++)
         {
-            sum += Mathf.Pow(myPos[i] - targetPos[i], 2);
+            sum += Mathf.Pow(transform.position[i] - targetPos[i], 2);
         }
         return sum <= Mathf.Pow(radius, 2f);
     }
 
     protected void DeathspownTimerUpdate()
     {
-        if (InCircle(transform.position, _player.gameObject.transform.position, GameManager.Instance.EnemyGenerator.SpownMinRange) == false)
+        if (InCircle(_player.gameObject.transform.position, GameManager.Instance.EnemyGenerator.SpownMinRange) == false)
         {
             _deathspownTimer.Update();
 
