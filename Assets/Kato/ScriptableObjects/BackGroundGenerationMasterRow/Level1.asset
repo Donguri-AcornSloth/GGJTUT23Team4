@@ -16,4 +16,4 @@ MonoBehaviour:
   BGColors: {r: 0, g: 0.0627451, b: 0.21568629, a: 1}
   saturation: 0
   colorFilter: {r: 1, g: 0.627451, b: 0.42352942, a: 0}
-  colorFilterFlag: 1
+  focusDistance: 1.5
