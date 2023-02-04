@@ -17,16 +17,19 @@ namespace Player
         {
             var pos = (Vector2) _body.position;
             var delta = pos - _prevPosition;
-            var angle = Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg;
+            if (delta != Vector2.zero)
+            {
+                var angle = Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg;
 
-            _currentAngle = Mathf.SmoothDampAngle(
-                _currentAngle,
-                angle,
-                ref _currentAngleVelocity,
-                0.1f
-            );
+                _currentAngle = Mathf.SmoothDampAngle(
+                    _currentAngle,
+                    angle,
+                    ref _currentAngleVelocity,
+                    0.1f
+                );
 
-            _body.rotation = Quaternion.Euler(0, 0, _currentAngle);
+                _body.rotation = Quaternion.Euler(0, 0, _currentAngle);
+            }
 
             _prevPosition = pos;
         }

@@ -27,6 +27,7 @@ namespace Player
 
             // コールバック登録
             PlayerEvolution.Instance.OnStarted.AddListener(row => SetAnimation(row._id));
+            PlayerEvolution.Instance.OnLevelChanged.AddListener(OnLevelChanged);
         }
 
         private void SetAnimation(int id)
@@ -39,6 +40,22 @@ namespace Player
                     anim._animation.Show();
                 else
                     anim._animation.Hide();
+            }
+        }
+
+        // 進化処理
+        private void OnLevelChanged(int level)
+        {
+            // TODO : 今は進化。後で餌の種類の割合を元に分岐させる
+            switch (level)
+            {
+                case 2:
+                    SetAnimation(2);
+                    break;
+
+                case 3:
+                    SetAnimation(4);
+                    break;
             }
         }
     }
