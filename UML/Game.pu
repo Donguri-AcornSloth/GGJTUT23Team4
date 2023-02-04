@@ -36,7 +36,6 @@ package Player {
 
     class PlayerMovement {
         + OnMove()
-        + OnJump()
     }
 
     PlayerMovement -> PlayerEvolution
