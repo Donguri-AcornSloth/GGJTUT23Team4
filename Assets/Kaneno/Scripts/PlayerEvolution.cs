@@ -7,6 +7,7 @@ namespace Player
     public class PlayerEvolution : MonoBehaviour, IInitialize
     {
         [SerializeField] private PlayerEvolutionMaster _master;
+        [SerializeField] private Transform _playerCenterPosition;
 
         public static PlayerEvolution Instance { get; private set; }
 
@@ -15,19 +16,19 @@ namespace Player
         /// <summary>
         /// 進化の段階
         /// </summary>
-        public int Level { get; private set; }
+        public int Level { get; private set; } = 1;
 
         /// <summary>
         /// 進化までのゲージ割合(0～1)
         /// 1になったら次の段階に進化する
         /// </summary>
-        public float Percentage { get; private set; }
+        public float Percentage { get; private set; } = 0;
 
         /// <summary>
         /// ヒットポイント
         /// </summary>
         public float HitPoint { get; private set; } = 100; // TODO : あとでマスタから読み込むようにする
-
+        
         /// <summary>
         /// 進化の形態
         /// </summary>
@@ -81,6 +82,11 @@ namespace Player
         /// ゲームプレイ開始通知
         /// </summary>
         public UnityEvent<PlayerEvolutionMaster.Row> OnStarted { get; } = new();
+        
+        /// <summary>
+        /// レベルが変わった通知
+        /// </summary>
+        public UnityEvent<int> OnLevelChanged { get; } = new();
 
         /// <summary>
         /// プレイヤー死亡通知
@@ -127,6 +133,11 @@ namespace Player
                 State = PlayerState.Dead;
                 OnDead?.Invoke();
             }
+        }
+        
+        // 餌を食べる
+        public void EatFeed()
+        {
         }
 
         #endregion
