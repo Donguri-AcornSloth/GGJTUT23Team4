@@ -9,12 +9,12 @@ using UnityEngine.Events;
 public class BackGroundGenerater : BackGroundBase, IInitialize
 {
     [SerializeField]
-    private int evolStage; //ÅV‚Ìi‰»’iŠK
+    private int evolStage; //æœ€æ–°ã®é€²åŒ–æ®µéš
     [SerializeField]
-    private int beforeEvolStage; //‘O‚Ìi‰»’iŠK
+    private int beforeEvolStage; //å‰ã®é€²åŒ–æ®µéš
 
     [SerializeField]
-    private bool BGChanging; //”wŒi‚ğØ‚è‘Ö‚¦‚é‚Ì”»’è
+    private bool BGChanging; //èƒŒæ™¯ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹æ™‚ã®åˆ¤å®š
     private bool _BGC;
 
     [SerializeField]
@@ -63,7 +63,8 @@ public class BackGroundGenerater : BackGroundBase, IInitialize
     private void BackGroundGenerate(int level)
     {
         evolStage = level;
-        cam.backgroundColor = Color.Lerp(BGGM.BGGMRows[beforeEvolStage].BGColors, BGGM.BGGMRows[evolStage - 1].BGColors, BGChangeTime);
+        // cam.backgroundColor = Color.Lerp(BGGM.BGGMRows[beforeEvolStage].BGColors, BGGM.BGGMRows[evolStage - 1].BGColors, BGChangeTime);
+        cam.backgroundColor = Color.Lerp(BGGM.BGGMRows[beforeEvolStage].BGColors, BGGM.BGGMRows[evolStage - 1].BGColors, 1);
         BGChangeTime += Time.unscaledDeltaTime;
         colorGrading.saturation.value = BGGM.BGGMRows[evolStage - 1].saturation;
         colorGrading.colorFilter.value = BGGM.BGGMRows[evolStage - 1].colorFilter;
@@ -76,7 +77,7 @@ public class BackGroundGenerater : BackGroundBase, IInitialize
         }
     }
 
-    //”wŒi‚Ì¶¬ƒƒ\ƒbƒh
+    //èƒŒæ™¯ã®ç”Ÿæˆãƒ¡ã‚½ãƒƒãƒ‰
     private void BGGenerate()
     {
         if (!BGChanging) BGChangeTime = 0;
