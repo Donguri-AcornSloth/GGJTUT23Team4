@@ -91,7 +91,7 @@ public class EnemyBase : MonoBehaviour
     }
 
     /// <summary>
-    /// Š´’m”ÍˆÍ“à‚É–Ú•WÀ•W‚ª‚ ‚é‚©‚Ç‚¤‚©
+    /// æ„ŸçŸ¥ç¯„å›²å†…ã«ç›®æ¨™åº§æ¨™ãŒã‚ã‚‹ã‹ã©ã†ã‹
     /// </summary>
     /// <param name="myPos"></param>
     /// <param name="targetPos"></param>
@@ -116,7 +116,7 @@ public class EnemyBase : MonoBehaviour
             if (_deathspownTimer.IsTimeUp)
             {
                 GameManager.Instance.EnemyGenerator.ObjectRemove(this);
-                Debug.Log("ƒGƒlƒ~[‚ğ”jŠü");
+                Debug.Log("ã‚¨ãƒãƒŸãƒ¼ã‚’ç ´æ£„");
                 Destroy(this.gameObject);
             }
         }

@@ -172,6 +172,9 @@ namespace Player
             _feedPointCarnivorous = 0;
             _feedPointHerbivore = 0;
 
+            HitPointMax = row._hitPoint;
+            HitPoint = row._hitPoint;
+
             OnEvolution?.Invoke(row);
         }
 
