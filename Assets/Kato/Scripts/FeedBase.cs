@@ -9,14 +9,16 @@ public class FeedBase : MonoBehaviour
     protected FeedType _feedType;
     [SerializeField, Tooltip("餌の毒の有無")]
     protected FeedPoison _feedPoison;
+    [SerializeField]
+    private FeedGenerater _fGen;
 
-    protected enum FeedType
+    public enum FeedType
     {
         草, //草
         肉, //肉
     }
 
-    protected enum FeedPoison
+    public enum FeedPoison
     {
         毒あり, //毒あり
         毒なし, //毒なし
@@ -25,7 +27,7 @@ public class FeedBase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _fGen = GameObject.Find("FeedGenerater").GetComponent<FeedGenerater>();
     }
 
     // Update is called once per frame
@@ -34,13 +36,14 @@ public class FeedBase : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        
-    }
-
+    /// <summary>
+    /// 餌自体がPlayerに触れた時の処理
+    /// </summary>
     public void PickUp()
     {
+        _fGen.generatedFeeds.Remove(this.gameObject);
+        //int objNum = _fGen.generatedFeeds.IndexOf(this.gameObject);
+        //_fGen.generatedFeeds.RemoveAt(objNum);
         Destroy(this.gameObject);
     }
 }

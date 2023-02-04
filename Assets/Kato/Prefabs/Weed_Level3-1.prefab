@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5701380547923093544}
   - component: {fileID: 6353427813734416391}
   - component: {fileID: 5198763069007127615}
-  - component: {fileID: 4191867782965239151}
+  - component: {fileID: 1714983881530717230}
   m_Layer: 0
-  m_Name: Weed_Level1-1
-  m_TagString: Untagged
+  m_Name: Weed_Level3-1
+  m_TagString: Feed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0eb5eb28f91bea846af96111680b2e13, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4bdab9ba8a529e347824e2e86ead44ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _feedType: 0
   _feedPoison: 1
---- !u!58 &4191867782965239151
+  _fGen: {fileID: 0}
+--- !u!58 &1714983881530717230
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,4 +116,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.16
+  m_Radius: 0.5

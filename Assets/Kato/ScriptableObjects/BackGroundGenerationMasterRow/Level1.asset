@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level1
   m_EditorClassIdentifier: 
   BGLists: []
-  BGColors: {r: 0, g: 0.0627451, b: 0.21568629, a: 1}
-  saturation: 0
-  colorFilter: {r: 1, g: 0.627451, b: 0.42352942, a: 0}
-  focusDistance: 1.5
+  BGColors: {r: 0, g: 0, b: 0, a: 0}
+  saturation: -100
+  colorFilter: {r: 1, g: 1, b: 1, a: 0}
+  focusDistance: 2.8

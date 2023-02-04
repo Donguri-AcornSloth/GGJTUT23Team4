@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c44b649968b26047add0f5e12b17a59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  feeds:
-  - {fileID: 7877000931959795072, guid: ba05024c282e4c041b4badfa9dae23f3, type: 3}
-  - {fileID: 7487336257200857909, guid: eb5f64d7e85b92540996cae3f41fccb3, type: 3}
+  FGM: {fileID: 11400000, guid: 195192cf170a77a4b996e92cd6813e1a, type: 2}
+  generatedFeeds: []
+  randPosMax: 5
+  randPosMin: -5
+  generateTime: 1
