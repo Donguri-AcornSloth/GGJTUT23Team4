@@ -41,7 +41,7 @@ public class BackGroundGenerater : BackGroundBase, IInitialize
     // Start is called before the first frame update
     void Start()
     {
-        PlayerEvolution.Instance.OnDead.AddListener(BackGroundGenerate); 
+        PlayerEvolution.Instance.OnLevelChanged.AddListener(BackGroundGenerate); 
     }
 
     // Update is called once per frame
@@ -60,18 +60,18 @@ public class BackGroundGenerater : BackGroundBase, IInitialize
         //BGGenerate();
     }
 
-    private void BackGroundGenerate()
+    private void BackGroundGenerate(int level)
     {
-        evolStage = PlayerEvolution.Instance.Level;
-        cam.backgroundColor = Color.Lerp(BGGM.BGGMRows[beforeEvolStage].BGColors, BGGM.BGGMRows[evolStage].BGColors, BGChangeTime);
+        evolStage = level;
+        cam.backgroundColor = Color.Lerp(BGGM.BGGMRows[beforeEvolStage].BGColors, BGGM.BGGMRows[evolStage - 1].BGColors, BGChangeTime);
         BGChangeTime += Time.unscaledDeltaTime;
-        colorGrading.saturation.value = BGGM.BGGMRows[evolStage].saturation;
-        colorGrading.colorFilter.value = BGGM.BGGMRows[evolStage].colorFilter;
-        depthOfField.focusDistance.value = BGGM.BGGMRows[evolStage].focusDistance;
+        colorGrading.saturation.value = BGGM.BGGMRows[evolStage - 1].saturation;
+        colorGrading.colorFilter.value = BGGM.BGGMRows[evolStage - 1].colorFilter;
+        depthOfField.focusDistance.value = BGGM.BGGMRows[evolStage - 1].focusDistance;
 
         if (BGChangeTime > 1.0f)
         {
-            beforeEvolStage = evolStage;
+            beforeEvolStage = evolStage - 1;
             BGChanging = false;
         }
     }
