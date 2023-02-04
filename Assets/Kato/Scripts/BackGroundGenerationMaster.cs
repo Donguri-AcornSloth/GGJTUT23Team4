@@ -2,17 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackGroundGenerationMaster : MonoBehaviour
+[CreateAssetMenu(fileName = "BackGroundGenerationMaster", menuName = "ScriptableObjects/BackGroundGenerationMaster", order = 2)]
+public class BackGroundGenerationMaster : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public List<BackGroundGenerationMasterRow> BGGMRows;
 }

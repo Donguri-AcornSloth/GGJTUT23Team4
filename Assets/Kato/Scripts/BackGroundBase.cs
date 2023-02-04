@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 /// <summary>
 /// 二次元リスト生成のクラス
 /// </summary>
@@ -18,10 +19,8 @@ public class ValueList
 
 public class BackGroundBase : MonoBehaviour
 {
-    public List<ValueList> BGLists = new List<ValueList>(); //背景として生成するオブジェクトのリスト
     [SerializeField]
-    protected List<Color> BGColors = new List<Color>(); //背景の色のリスト
-
+    protected BackGroundGenerationMaster BGGM;
     [SerializeField]
     protected GameManager gameManager;
 

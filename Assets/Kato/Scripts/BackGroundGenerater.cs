@@ -1,7 +1,9 @@
+using Player;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class BackGroundGenerater : BackGroundBase
 {
@@ -14,6 +16,11 @@ public class BackGroundGenerater : BackGroundBase
     private bool BGChanging; //îwåiÇêÿÇËë÷Ç¶ÇÈéûÇÃîªíË
     private bool _BGC;
 
+    [SerializeField]
+    private PostProcessVolume postProcessVolume;
+    private PostProcessProfile postProcessProfile;
+    private ColorGrading colorGrading;
+    private DepthOfField depthOfField;
 
     //èâä˙âªèàóù
     private void Init()
@@ -22,6 +29,14 @@ public class BackGroundGenerater : BackGroundBase
         beforeEvolStage = 0;
         BGChanging = false;
         _BGC = false;
+        postProcessProfile = postProcessVolume.profile;
+        colorGrading = postProcessProfile.GetSetting<ColorGrading>();
+        depthOfField = postProcessProfile.GetSetting<DepthOfField>();
+        cam.backgroundColor = BGGM.BGGMRows[0].BGColors;
+        colorGrading.saturation.value = BGGM.BGGMRows[0].saturation;
+        colorGrading.colorFilter.value = BGGM.BGGMRows[0].colorFilter;
+        depthOfField.focusDistance.value = BGGM.BGGMRows[0].focusDistance;
+        //colorGrading = postProcessVolume.GetComponent<ColorGrading>();
     }
 
     // Start is called before the first frame update
@@ -55,9 +70,12 @@ public class BackGroundGenerater : BackGroundBase
         {
             if (_BGC) evolStage += 1;
             _BGC = false;
-            //evolStage = gameManager.
-            cam.backgroundColor = Color.Lerp(BGColors[beforeEvolStage], BGColors[evolStage], BGChangeTime);
+            evolStage = PlayerEvolution.Instance.Level;
+            cam.backgroundColor = Color.Lerp(BGGM.BGGMRows[beforeEvolStage].BGColors, BGGM.BGGMRows[evolStage].BGColors, BGChangeTime);
             BGChangeTime += Time.unscaledDeltaTime;
+            colorGrading.saturation.value = BGGM.BGGMRows[evolStage].saturation;
+            colorGrading.colorFilter.value = BGGM.BGGMRows[evolStage].colorFilter;
+            depthOfField.focusDistance.value = BGGM.BGGMRows[evolStage].focusDistance;
 
             if (BGChangeTime > 1.0f)
             {

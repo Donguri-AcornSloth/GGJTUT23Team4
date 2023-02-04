@@ -23,6 +23,6 @@ public class FeedGenerater : MonoBehaviour
     private void FGenerate()
     {
         int feedMode = (int)Random.Range(0, 2);
-        GameObject feed = Instantiate(feeds[feedMode], )
+        //GameObject feed = Instantiate(feeds[feedMode], )
     }
 }
