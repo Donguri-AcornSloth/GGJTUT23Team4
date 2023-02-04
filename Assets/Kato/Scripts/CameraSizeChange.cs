@@ -33,7 +33,7 @@ public class CameraSizeChange : CameraSizeChangeBase
             //if (_CSC) evolStage += 1;
             //_CSC = false;
             evolStage = PlayerEvolution.Instance.Level - 1;
-            vcam.m_Lens.OrthographicSize = Color.Lerp(CSCM.CSCMRows[beforeEvolStage].orthoSize, CSCM.CSCMRows[evolStage].orthoSize, CSChangeTime);
+            vcam.m_Lens.OrthographicSize = Mathf.Lerp(CSCM.CSCMRows[beforeEvolStage].orthoSize, CSCM.CSCMRows[evolStage].orthoSize, CSChangeTime);
             CSChangeTime += Time.unscaledDeltaTime;
 
             if (CSChangeTime > 1.0f)
@@ -42,4 +42,5 @@ public class CameraSizeChange : CameraSizeChangeBase
                 CSChanging = false;
             }
         }
+    }
 }
