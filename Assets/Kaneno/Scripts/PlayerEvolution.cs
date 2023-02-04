@@ -82,6 +82,11 @@ namespace Player
         /// ゲームプレイ開始通知
         /// </summary>
         public UnityEvent<PlayerEvolutionMaster.Row> OnStarted { get; } = new();
+        
+        /// <summary>
+        /// レベルが変わった通知
+        /// </summary>
+        public UnityEvent<int> OnLevelChanged { get; } = new();
 
         /// <summary>
         /// プレイヤー死亡通知
@@ -128,6 +133,11 @@ namespace Player
                 State = PlayerState.Dead;
                 OnDead?.Invoke();
             }
+        }
+        
+        // 餌を食べる
+        public void EatFeed()
+        {
         }
 
         #endregion
