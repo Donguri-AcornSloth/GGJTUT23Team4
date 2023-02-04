@@ -51,6 +51,10 @@ package Player {
     }
 
     PlayerCollision -> PlayerEvolution
+
+    class PlayerEvolutionMaster {
+    }
+    PlayerEvolution --> PlayerEvolutionMaster
 }
 
 ' フィールド共通
@@ -80,6 +84,8 @@ package Enemy {
     FieldObjectGeneratorBase <|--- EnemyGenerator
     EnemyGenerator "1" o-- "0..*" EnemyBase
     EnemyGenerator ----> PlayerEvolution
+
+    EnemyGenerator --> EnemyGenerationMaster
 }
 
 ' 餌
@@ -93,7 +99,9 @@ package Feed {
     }
     FieldObjectGeneratorBase <|--- FeedGenerator
     FeedGenerator "1" o-- "0..*" FeedBase
-    FeedGenerator ----> PlayerEvolution
+
+    FeedGenerator --> FieldGenerationMaster
+
 }
 
 ' 背景・その他飾り
@@ -107,6 +115,8 @@ package Background {
     FieldObjectGeneratorBase <|--- BackgroundGenerator
     BackgroundGenerator "1" o-- "0..*" BackgroundBase
     BackgroundGenerator ----> PlayerEvolution
+
+    BackgroundGenerator --> BackgroundGenerationMaster
 }
 
 FeedBase <-- PlayerCollision
