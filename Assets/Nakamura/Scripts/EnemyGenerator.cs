@@ -162,33 +162,25 @@ public class EnemyGenerator : MonoBehaviour, IInitialize
 
     public void EvolutionEvent(int level)
     {
+        Debug.Log(level);
         switch (level)
         {
-            case 1:
+            case 2:
                 {
                     foreach(var enemy in _firstGenerationEnemyList)
                     {
-                        Destroy(enemy.gameObject);
+                        Destroy(enemy);
                     }
                     _firstGenerationEnemyList.Clear();
                 }
                 break;
-            case 2:
+            case 3:
                 {
                     foreach (var enemy in _secondGenerationEnemyList)
                     {
-                        Destroy(enemy.gameObject);
+                        Destroy(enemy);
                     }
                     _secondGenerationEnemyList.Clear();
-                }
-                break;
-            case 3:
-                {
-                    foreach (var enemy in _thirdGenerationEnemyList)
-                    {
-                        Destroy(enemy.gameObject);
-                    }
-                    _thirdGenerationEnemyList.Clear();
                 }
                 break;
         }
