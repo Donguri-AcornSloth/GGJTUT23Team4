@@ -1,12 +1,13 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Player
 {
-    public class PlayerAnimationLevel2 : PlayerAnimationBase
+    public class PlayerAnimationCell : PlayerAnimationBase
     {
         [SerializeField] private Transform _body;
 
         [SerializeField] private Transform _cell;
+        [SerializeField] private Transform _core;
 
         private Vector2 _prevPosition;
         private float _currentAngle;
