@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Events;
 
 public class BackGroundGenerater : BackGroundBase
 {
@@ -36,13 +37,13 @@ public class BackGroundGenerater : BackGroundBase
         colorGrading.saturation.value = BGGM.BGGMRows[0].saturation;
         colorGrading.colorFilter.value = BGGM.BGGMRows[0].colorFilter;
         depthOfField.focusDistance.value = BGGM.BGGMRows[0].focusDistance;
-        //colorGrading = postProcessVolume.GetComponent<ColorGrading>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         Init();
+        BackGroundGenerate();
     }
 
     // Update is called once per frame
@@ -53,13 +54,28 @@ public class BackGroundGenerater : BackGroundBase
 
     private void FixedUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        //if(PlayerEvolution.Instance.OnLevelChanged)
+        //{
+        //    BGChanging = true;
+        //    _BGC = true;
+        //}
+        //BGGenerate();
+    }
+
+    private void BackGroundGenerate()
+    {
+        evolStage = PlayerEvolution.Instance.Level;
+        cam.backgroundColor = Color.Lerp(BGGM.BGGMRows[beforeEvolStage].BGColors, BGGM.BGGMRows[evolStage].BGColors, BGChangeTime);
+        BGChangeTime += Time.unscaledDeltaTime;
+        colorGrading.saturation.value = BGGM.BGGMRows[evolStage].saturation;
+        colorGrading.colorFilter.value = BGGM.BGGMRows[evolStage].colorFilter;
+        depthOfField.focusDistance.value = BGGM.BGGMRows[evolStage].focusDistance;
+
+        if (BGChangeTime > 1.0f)
         {
-            BGChanging = true;
-            _BGC = true;
-            Debug.Log("1"); 
+            beforeEvolStage = evolStage;
+            BGChanging = false;
         }
-        BGGenerate();
     }
 
     //îwåiÇÃê∂ê¨ÉÅÉ\ÉbÉh
