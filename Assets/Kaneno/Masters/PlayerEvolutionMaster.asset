@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79f55bc62e068ae4697501a9ba98b84e, type: 3}
   m_Name: PlayerEvolutionMaster
   m_EditorClassIdentifier: 
-  _maxLevel: 3
+  _maxLevel: 4
   _rows:
   - _name: "1\u6BB5\u968E\u76EE"
     _id: 1
@@ -113,7 +113,7 @@ MonoBehaviour:
     _movementSpeed: 1.2
     _nextEvolutionPaths: []
   - _name: "4\u6BB5\u968E\u76EE\uFF08\u8349\u98DF\uFF09"
-    _id: 8
+    _id: 9
     _type: 1
     _attackValue: 0
     _hitPoint: 1

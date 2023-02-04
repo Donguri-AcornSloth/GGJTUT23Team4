@@ -178,10 +178,18 @@ namespace Player
         // 餌を食べる
         public void EatFeed(FeedBase feed)
         {
+            // 肉・草の判定
             // TODO : 後からパラメータ戻す
-            // _feedPointCarnivorous += 1;
-            _feedPointCarnivorous += 15;
-            _feedPointHerbivore += 15;
+            switch (feed._feedType)
+            {
+                case FeedBase.FeedType.肉:
+                    _feedPointCarnivorous += 30;
+                    break;
+
+                case FeedBase.FeedType.草:
+                    _feedPointHerbivore += 30;
+                    break;
+            }
 
             if (Percentage >= 1)
             {
