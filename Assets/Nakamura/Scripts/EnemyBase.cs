@@ -43,7 +43,6 @@ public class EnemyBase : MonoBehaviour
 
     protected StateEnum _currentState;
     protected StateManager<ActionStateEnum> _stateManager = new StateManager<ActionStateEnum>();
-    protected Vector3 _nextCourse = Vector3.zero;
     protected Timer _turnTimer = new Timer();
     protected float _nextAngle;
     protected Quaternion _targetRotation;
@@ -51,13 +50,14 @@ public class EnemyBase : MonoBehaviour
     protected PlayerMovement _player;
 
     public EnemyTypeEnum EnemyType { get { return _enemyType; } }
+    public float AttackValue { get { return _attackValue; } }
 
     protected void SetPlayer()
     {
         _player = GameManager.Instance.Player;
     }
 
-    public void Damaged(int value)
+    public void ApplyDamage(float value)
     {
         _currentHP -= value;
     }
@@ -162,7 +162,7 @@ public class EnemyBase : MonoBehaviour
         _turnTimer.ResetTimer(_turnTime);
         _turnRate = 0;
 
-        _targetRotation = Quaternion.AngleAxis(Random.Range(-90, 90), Vector3.forward) * transform.rotation;
+        _targetRotation = Quaternion.AngleAxis(Random.Range(0, 360), Vector3.forward) * transform.rotation;
     }
     protected virtual bool OnStateTurnUpdate()
     {

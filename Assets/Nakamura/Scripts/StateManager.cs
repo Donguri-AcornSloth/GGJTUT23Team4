@@ -105,4 +105,15 @@ public class StateManager<T>
         }
         _currentStateList.Add(state);
     }
+
+    public void ForceStop()
+    {
+        if(_currentState != null)
+        {
+            _currentState.Exit();
+        }
+        _currentState = null;
+        _currentStateList.Clear();
+        _currentIndex = 0;
+    }
 }
