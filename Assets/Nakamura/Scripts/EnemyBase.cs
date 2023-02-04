@@ -36,6 +36,10 @@ public class EnemyBase : MonoBehaviour
     [SerializeField]
     protected float _currentHP;
     [SerializeField]
+    protected bool _viewRaderCircle = false;
+    [SerializeField]
+    protected float _raderRadius;
+    [SerializeField]
     protected float _turnTime = 3f;
 
     [SerializeField]
@@ -44,22 +48,70 @@ public class EnemyBase : MonoBehaviour
     protected StateEnum _currentState;
     protected StateManager<ActionStateEnum> _stateManager = new StateManager<ActionStateEnum>();
     protected Timer _turnTimer = new Timer();
-    protected float _nextAngle;
+    protected Vector2 _moveDirection;
     protected Quaternion _targetRotation;
     protected float _turnRate = 0;
     protected PlayerMovement _player;
+    private int _spownGeneration;
+    private int _id;
+    private Timer _deathspownTimer = new Timer();
 
     public EnemyTypeEnum EnemyType { get { return _enemyType; } }
     public float AttackValue { get { return _attackValue; } }
+    public int SpownGeneration { get { return _spownGeneration; } }
+    public int ID { get { return _id; } }
 
     protected void SetPlayer()
     {
+        _deathspownTimer.ResetTimer(GameManager.Instance.EnemyGenerator.DeathspownTime);
         _player = GameManager.Instance.Player;
     }
 
     public void ApplyDamage(float value)
     {
         _currentHP -= value;
+    }
+
+    public void SetId(int generation, int id)
+    {
+        _spownGeneration = generation;
+        _id = id;
+    }
+
+    /// <summary>
+    /// 感知範囲内に目標座標があるかどうか
+    /// </summary>
+    /// <param name="myPos"></param>
+    /// <param name="targetPos"></param>
+    /// <param name="radius"></param>
+    /// <returns></returns>
+    protected bool InCircle(Vector2 targetPos, float radius)
+    {
+        var sum = 0f;
+        for(var i = 0; i < 2; i++)
+        {
+            sum += Mathf.Pow(transform.position[i] - targetPos[i], 2);
+        }
+        return sum <= Mathf.Pow(radius, 2f);
+    }
+
+    protected void DeathspownTimerUpdate()
+    {
+        if (InCircle(_player.gameObject.transform.position, GameManager.Instance.EnemyGenerator.SpownMinRange) == false)
+        {
+            _deathspownTimer.Update();
+
+            if (_deathspownTimer.IsTimeUp)
+            {
+                GameManager.Instance.EnemyGenerator.ObjectRemove(this);
+                Debug.Log("エネミーを破棄");
+                Destroy(this.gameObject);
+            }
+        }
+        else
+        {
+            _deathspownTimer.ResetTimer(GameManager.Instance.EnemyGenerator.DeathspownTime);
+        }
     }
 
     protected void ChangeState(StateEnum next)
@@ -131,6 +183,14 @@ public class EnemyBase : MonoBehaviour
         _stateManager.DefineState(ActionStateEnum.Escape, OnStateEscapeEnter, OnStateEscapeUpdate, OnStateEscapeExit);
         _stateManager.DefineState(ActionStateEnum.Attack_01, OnStateAttack01Enter, OnStateAttack01Update, OnStateAttack01Exit);
         _stateManager.DefineState(ActionStateEnum.Attack_02, OnStateAttack02Enter, OnStateAttack02Update, OnStateAttack02Exit);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!_viewRaderCircle) return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _raderRadius);
     }
 
     protected virtual void OnStateIdleEnter()

@@ -19,10 +19,13 @@ public class GameManager : MonoBehaviour
     
     [SerializeField]
     private PlayerMovement _player = null;
+    [SerializeField]
+    private EnemyGenerator _enemyGenerator = null;
 
     public static GameManager Instance { get { return _instance; } }
     public StateEnum CurrentState { get { return _currentState; } }
     public PlayerMovement Player { get { return _player; } }
+    public EnemyGenerator EnemyGenerator { get { return _enemyGenerator; } }
 
     private void Awake()
     {
