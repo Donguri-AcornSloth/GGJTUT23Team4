@@ -11,8 +11,8 @@ public class FeedGenerater : MonoBehaviour, IInitialize
     [SerializeField]
     private FeedGenerationMaster FGM;
     //[SerializeField]
-    //private List<GameObject> feeds; //¶¬‚·‚é‰a‚ÌƒŠƒXƒg
-    public List<GameObject> generatedFeeds; //¶¬‚µ‚½‰a‚ÌƒŠƒXƒg
+    //private List<GameObject> feeds; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½aï¿½Ìƒï¿½ï¿½Xï¿½g
+    public List<GameObject> generatedFeeds; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½aï¿½Ìƒï¿½ï¿½Xï¿½g
     [SerializeField]
     private float randPosMax;
     [SerializeField]
@@ -29,11 +29,13 @@ public class FeedGenerater : MonoBehaviour, IInitialize
         player = GameObject.Find("Player").GetComponent<Transform>();
         if (generatedFeeds.Count > 0)
         {
-            foreach (var f in generatedFeeds) 
+            foreach (var f in generatedFeeds)
             {
-                Destroy(f.gameObject);
-                generatedFeeds.Clear();
+                if (f != null)
+                    Destroy(f);
             }
+            
+            generatedFeeds.Clear();
         }
     }
     // Start is called before the first frame update
@@ -58,7 +60,7 @@ public class FeedGenerater : MonoBehaviour, IInitialize
         }
     }
 
-    //‰a¶¬ƒƒ\ƒbƒh
+    //ï¿½aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½bï¿½h
     public void FGenerate(int level)
     {
         int feedMode = Random.Range(0, FGM.FGMRows[level].generatingFeeds.Count);

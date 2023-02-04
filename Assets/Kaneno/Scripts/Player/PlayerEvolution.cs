@@ -150,6 +150,7 @@ namespace Player
         {
             // 生きている状態にする
             State = PlayerState.Living;
+            Level = 1;
 
             // 最初は1段階目
             SetEvolution(1);
