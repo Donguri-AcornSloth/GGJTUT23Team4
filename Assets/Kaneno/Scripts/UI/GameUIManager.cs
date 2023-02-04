@@ -9,35 +9,27 @@ namespace UI
         [SerializeField] private GameObject _titleUI;
         [SerializeField] private GameObject _gameUI;
         [SerializeField] private GameObject _gameOverUI;
+        [SerializeField] private GameObject _clearUI;
 
         [SerializeField] private Button _startButton;
-        [SerializeField] private Button _titleButton;
-
-        private enum State
-        {
-            None,
-
-            Title,
-            Playing,
-            GameOver,
-            Cleared,
-        }
-
-        private State _state = State.None;
+        [SerializeField] private Button[] _titleButtons;
 
         private void Awake()
         {
             _startButton.onClick.AddListener(() => GameManager.Instance.ChangeState(GameManager.StateEnum.Play));
-            _titleButton.onClick.AddListener(() => GameManager.Instance.ChangeState(GameManager.StateEnum.StartMenu));
-            
+
+            foreach (var button in _titleButtons)
+            {
+                button.onClick.AddListener(() => GameManager.Instance.ChangeState(GameManager.StateEnum.StartMenu));
+            }
+
             OnChangeState(GameManager.StateEnum.StartMenu);
-            
+
             GameManager.Instance.OnStateChanged.AddListener(OnChangeState);
         }
 
         public void Initialize()
         {
-            _state = State.Playing;
         }
 
         private void OnChangeState(GameManager.StateEnum state)
@@ -48,24 +40,28 @@ namespace UI
                     _titleUI.SetActive(true);
                     _gameUI.SetActive(false);
                     _gameOverUI.SetActive(false);
+                    _clearUI.SetActive(false);
                     break;
 
                 case GameManager.StateEnum.Play:
                     _titleUI.SetActive(false);
                     _gameUI.SetActive(true);
                     _gameOverUI.SetActive(false);
+                    _clearUI.SetActive(false);
                     break;
 
                 case GameManager.StateEnum.GameOver:
                     _titleUI.SetActive(false);
                     _gameUI.SetActive(false);
                     _gameOverUI.SetActive(true);
+                    _clearUI.SetActive(false);
                     break;
 
-                default:
+                case GameManager.StateEnum.Clear:
                     _titleUI.SetActive(false);
                     _gameUI.SetActive(false);
                     _gameOverUI.SetActive(false);
+                    _clearUI.SetActive(true);
                     break;
             }
         }
