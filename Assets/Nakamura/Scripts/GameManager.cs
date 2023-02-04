@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Player;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class GameManager : MonoBehaviour
     public StateEnum CurrentState { get { return _currentState; } }
     public PlayerMovement Player { get { return _player; } }
     public EnemyGenerator EnemyGenerator { get { return _enemyGenerator; } }
+
+    public UnityEvent<StateEnum> OnStateChanged { get; } = new();
 
     private void Awake()
     {
@@ -82,6 +85,8 @@ public class GameManager : MonoBehaviour
                 }
                 break;
         }
+        
+        OnStateChanged?.Invoke(nextState);
     }
     void UpdateState()
     {
