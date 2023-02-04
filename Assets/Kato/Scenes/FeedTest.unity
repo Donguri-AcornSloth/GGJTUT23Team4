@@ -3706,6 +3706,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8210110268594482726, guid: 5e47cc9500584bc4e8794d927fbedc42, type: 3}
   m_PrefabInstance: {fileID: 619893349}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &623187078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 623187079}
+  m_Layer: 0
+  m_Name: CameraSizeChange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &623187079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623187078}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &641375510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4544,6 +4575,14 @@ PrefabInstance:
     - target: {fileID: 8153162407544300579, guid: 113d438a7ff11d1468ee3617e8d6e916, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153162408440049562, guid: 113d438a7ff11d1468ee3617e8d6e916, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153162408818853443, guid: 113d438a7ff11d1468ee3617e8d6e916, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8153162408824409639, guid: 113d438a7ff11d1468ee3617e8d6e916, type: 3}
       propertyPath: m_Name

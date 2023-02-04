@@ -23,6 +23,8 @@ public class BackGroundGenerater : BackGroundBase, IInitialize
     private ColorGrading colorGrading;
     private DepthOfField depthOfField;
 
+    private float BGChangeTimes;
+
     public void Initialize()
     {
         evolStage = 0;
@@ -81,25 +83,22 @@ public class BackGroundGenerater : BackGroundBase, IInitialize
     private void BGGenerateSwitch(int level)
     {
         BGChanging = true;
-        _BGC = true;
     }
 
     //背景の生成メソッド
     private void BGGenerate()
     {
-        if (!BGChanging) BGChangeTime = 0;
+        if (!BGChanging) BGChangeTimes = 0;
         if (BGChanging)
         {
-            //if (_BGC) evolStage += 1;
-            //_BGC = false;
             evolStage = PlayerEvolution.Instance.Level - 1;
             cam.backgroundColor = Color.Lerp(BGGM.BGGMRows[beforeEvolStage].BGColors, BGGM.BGGMRows[evolStage].BGColors, BGChangeTime);
-            BGChangeTime += Time.unscaledDeltaTime;
+            BGChangeTimes += Time.deltaTime;
             colorGrading.saturation.value = BGGM.BGGMRows[evolStage].saturation;
             colorGrading.colorFilter.value = BGGM.BGGMRows[evolStage].colorFilter;
             depthOfField.focusDistance.value = BGGM.BGGMRows[evolStage].focusDistance;
 
-            if (BGChangeTime > 1.0f)
+            if (BGChangeTimes > BGChangeTime)
             {
                 beforeEvolStage = evolStage;
                 BGChanging = false;

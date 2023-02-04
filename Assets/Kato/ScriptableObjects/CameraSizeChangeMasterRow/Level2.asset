@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba2dab0183a98c4997fb79f988e1a38, type: 3}
   m_Name: Level2
   m_EditorClassIdentifier: 
-  orthoSize: 0
+  orthoSize: 3.2
