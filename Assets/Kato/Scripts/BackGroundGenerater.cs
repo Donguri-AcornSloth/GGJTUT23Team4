@@ -41,7 +41,8 @@ public class BackGroundGenerater : BackGroundBase, IInitialize
     // Start is called before the first frame update
     void Start()
     {
-        PlayerEvolution.Instance.OnLevelChanged.AddListener(BackGroundGenerate); 
+        //PlayerEvolution.Instance.OnLevelChanged.AddListener(BackGroundGenerate);
+        PlayerEvolution.Instance.OnLevelChanged.AddListener(BGGenerateSwitch);
     }
 
     // Update is called once per frame
@@ -57,24 +58,30 @@ public class BackGroundGenerater : BackGroundBase, IInitialize
         //    BGChanging = true;
         //    _BGC = true;
         //}
-        //BGGenerate();
+        BGGenerate();
     }
 
-    private void BackGroundGenerate(int level)
-    {
-        evolStage = level;
-        // cam.backgroundColor = Color.Lerp(BGGM.BGGMRows[beforeEvolStage].BGColors, BGGM.BGGMRows[evolStage - 1].BGColors, BGChangeTime);
-        cam.backgroundColor = Color.Lerp(BGGM.BGGMRows[beforeEvolStage].BGColors, BGGM.BGGMRows[evolStage - 1].BGColors, 1);
-        BGChangeTime += Time.unscaledDeltaTime;
-        colorGrading.saturation.value = BGGM.BGGMRows[evolStage - 1].saturation;
-        colorGrading.colorFilter.value = BGGM.BGGMRows[evolStage - 1].colorFilter;
-        depthOfField.focusDistance.value = BGGM.BGGMRows[evolStage - 1].focusDistance;
+    //private void BackGroundGenerate(int level)
+    //{
+    //    evolStage = level;
+    //    // cam.backgroundColor = Color.Lerp(BGGM.BGGMRows[beforeEvolStage].BGColors, BGGM.BGGMRows[evolStage - 1].BGColors, BGChangeTime);
+    //    cam.backgroundColor = Color.Lerp(BGGM.BGGMRows[beforeEvolStage].BGColors, BGGM.BGGMRows[evolStage - 1].BGColors, 1);
+    //    BGChangeTime += Time.unscaledDeltaTime;
+    //    colorGrading.saturation.value = BGGM.BGGMRows[evolStage - 1].saturation;
+    //    colorGrading.colorFilter.value = BGGM.BGGMRows[evolStage - 1].colorFilter;
+    //    depthOfField.focusDistance.value = BGGM.BGGMRows[evolStage - 1].focusDistance;
 
-        if (BGChangeTime > 1.0f)
-        {
-            beforeEvolStage = evolStage - 1;
-            BGChanging = false;
-        }
+    //    if (BGChangeTime > 1.0f)
+    //    {
+    //        beforeEvolStage = evolStage - 1;
+    //        BGChanging = false;
+    //    }
+    //}
+
+    private void BGGenerateSwitch(int level)
+    {
+        BGChanging = true;
+        _BGC = true;
     }
 
     //背景の生成メソッド
@@ -83,9 +90,9 @@ public class BackGroundGenerater : BackGroundBase, IInitialize
         if (!BGChanging) BGChangeTime = 0;
         if (BGChanging)
         {
-            if (_BGC) evolStage += 1;
-            _BGC = false;
-            evolStage = PlayerEvolution.Instance.Level;
+            //if (_BGC) evolStage += 1;
+            //_BGC = false;
+            evolStage = PlayerEvolution.Instance.Level - 1;
             cam.backgroundColor = Color.Lerp(BGGM.BGGMRows[beforeEvolStage].BGColors, BGGM.BGGMRows[evolStage].BGColors, BGChangeTime);
             BGChangeTime += Time.unscaledDeltaTime;
             colorGrading.saturation.value = BGGM.BGGMRows[evolStage].saturation;
