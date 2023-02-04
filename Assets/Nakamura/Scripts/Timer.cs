@@ -7,7 +7,7 @@ public class Timer
     private float _targetTime;
     private float _elapsedTime = 0;
 
-    public Timer(float targetTime)
+    public Timer(float targetTime = 1f)
     {
         if(targetTime <= 0)
         {
@@ -25,5 +25,9 @@ public class Timer
         _elapsedTime += Time.deltaTime * timeScale;
         return IsTimeUp;
     }
-    public void ResetTimer() => _elapsedTime = 0;
+    public void ResetTimer(float targetTime)
+    {
+        _targetTime = targetTime;
+        _elapsedTime = 0;
+    }
 }
