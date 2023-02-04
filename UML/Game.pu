@@ -15,7 +15,7 @@ package Common {
         + Initialize()
     }
 
-    GameManager -> IInitializable
+    GameManager --> IInitializable
 
     class Timer {
         + IsTimeUp : bool
@@ -41,7 +41,7 @@ package Player {
 
     PlayerMovement -> PlayerEvolution
     PlayerMovement ---> PlayerInput
-    PlayerMovement ---> Timer
+    Timer <--- PlayerMovement
 
     class PlayerAnimation {
     }
@@ -65,7 +65,7 @@ package Field {
     class FieldObjectGeneratorBase <<abstract>> {
     }
     IFIeldObjectGenerator <|-- FieldObjectGeneratorBase
-    IInitializable <|--- FieldObjectGeneratorBase
+    FieldObjectGeneratorBase -----|> IInitializable
 
     FieldObjectGeneratorBase "1" o-- "0..*" IFieldObject
 }
