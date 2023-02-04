@@ -43,7 +43,7 @@ namespace Player
         /// ヒットポイントの割合
         /// </summary>
         public float HitPointPercentage => HitPoint / HitPointMax;
-        
+
         /// <summary>
         /// 攻撃力
         /// </summary>
@@ -231,6 +231,12 @@ namespace Player
                             break;
                         }
                     }
+                }
+                else
+                {
+                    // ステージクリア
+                    State = PlayerState.None;
+                    GameManager.Instance.ChangeState(GameManager.StateEnum.Clear);
                 }
             }
         }

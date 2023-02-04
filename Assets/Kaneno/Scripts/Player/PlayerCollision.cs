@@ -20,8 +20,8 @@ namespace Player
             var enemy = col.GetComponent<EnemyBase>();
             if (enemy != null)
             {
-                // enemy.ApplyDamage(PlayerEvolution.Instance.AttackValue);
-                // PlayerEvolution.Instance.ApplyDamage(enemy.AttackValue);
+                enemy.ApplyDamage(PlayerEvolution.Instance.AttackValue);
+                PlayerEvolution.Instance.ApplyDamage(enemy.AttackValue);
             }
         }
 
