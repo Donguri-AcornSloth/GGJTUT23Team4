@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Player
@@ -15,7 +16,21 @@ namespace Player
                 PlayerEvolution.Instance.EatFeed(feed);
             }
 
-            // TODO : 敵の判定処理実装
+            // 敵の判定処理
+            var enemy = col.GetComponent<EnemyBase>();
+            if (enemy != null)
+            {
+                // enemy.ApplyDamage(PlayerEvolution.Instance.AttackValue);
+                // PlayerEvolution.Instance.ApplyDamage(enemy.AttackValue);
+            }
         }
+
+        // private void Update()
+        // {
+        //     if (Input.GetKeyDown(KeyCode.Alpha1))
+        //     {
+        //         PlayerEvolution.Instance.ApplyDamage(100000);
+        //     }
+        // }
     }
 }

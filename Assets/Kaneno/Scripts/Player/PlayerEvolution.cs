@@ -43,6 +43,11 @@ namespace Player
         /// ヒットポイントの割合
         /// </summary>
         public float HitPointPercentage => HitPoint / HitPointMax;
+        
+        /// <summary>
+        /// 攻撃力
+        /// </summary>
+        public float AttackValue { get; private set; }
 
         // 現在の形態ID
         private int _evolutionID;
@@ -169,7 +174,7 @@ namespace Player
         }
 
         // プレイヤー自身にダメージ与える(内部的に使う想定)
-        private void ApplyDamage(float damage)
+        public void ApplyDamage(float damage)
         {
             if (State != PlayerState.Living)
                 return;
