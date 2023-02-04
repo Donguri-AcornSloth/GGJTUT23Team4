@@ -6,11 +6,11 @@ using static Unity.VisualScripting.Dependencies.Sqlite.SQLite3;
 public class FeedBase : MonoBehaviour
 {
     [SerializeField, Tooltip("餌のタイプ(草か肉か)")]
-    protected FeedType _feedType;
+    public FeedType _feedType;
     [SerializeField, Tooltip("餌の毒の有無")]
-    protected FeedPoison _feedPoison;
+    public FeedPoison _feedPoison;
     [SerializeField]
-    private FeedGenerater _fGen;
+    public FeedGenerater _fGen;
 
     public enum FeedType
     {
