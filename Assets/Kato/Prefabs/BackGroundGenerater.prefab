@@ -44,16 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecfb411dcced858499f875b463c77bfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGLists:
-  - List: 
-  - List: 
-  BGColors:
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0.0627451, b: 0.21568629, a: 1}
-  - {r: 0.53333336, g: 0.8941177, b: 0.74509805, a: 1}
+  BGGM: {fileID: 11400000, guid: 45cfc99048d836345adf7dc17708ca9e, type: 2}
   gameManager: {fileID: 0}
   cam: {fileID: 0}
-  BGChangeTime: 0
+  BGChangeTime: 2
   evolStage: 0
   beforeEvolStage: 0
   BGChanging: 0
+  postProcessVolume: {fileID: 0}

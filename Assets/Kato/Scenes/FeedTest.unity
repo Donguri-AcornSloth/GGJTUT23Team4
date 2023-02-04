@@ -6524,17 +6524,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 231215103}
     - target: {fileID: 1445565125949637050, guid: 1490ef68cf1434a439f5425dc1e981c7, type: 3}
-      propertyPath: BGGM
-      value: 
-      objectReference: {fileID: 11400000, guid: 45cfc99048d836345adf7dc17708ca9e, type: 2}
-    - target: {fileID: 1445565125949637050, guid: 1490ef68cf1434a439f5425dc1e981c7, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1216066319}
-    - target: {fileID: 1445565125949637050, guid: 1490ef68cf1434a439f5425dc1e981c7, type: 3}
-      propertyPath: BGChangeTime
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1445565125949637050, guid: 1490ef68cf1434a439f5425dc1e981c7, type: 3}
       propertyPath: postProcessVolume
       value: 
