@@ -17,6 +17,11 @@ namespace Player
             _inputMove = context.ReadValue<Vector2>();
         }
 
+        private void Awake()
+        {
+            // 形態に応じた速さを反映する（イベント登録）
+        }
+
         private void Update()
         {
             if (PlayerEvolution.Instance.State != PlayerEvolution.PlayerState.Living)

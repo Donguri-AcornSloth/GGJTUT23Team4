@@ -33,6 +33,8 @@ namespace Player
             public PlayerEvolution.EvolutionType _type;
             public float _attackValue;
             public float _hitPoint;
+            public float _nextFeedPoint;
+            public float _movementSpeed;
 
             // 成長経路情報リスト
             public NextEvolutionPath[] _nextEvolutionPaths;

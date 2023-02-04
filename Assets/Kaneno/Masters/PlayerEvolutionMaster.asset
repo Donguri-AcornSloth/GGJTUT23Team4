@@ -18,7 +18,8 @@ MonoBehaviour:
     _id: 1
     _type: 0
     _attackValue: 0
-    _hitPoint: 0
+    _hitPoint: 1
+    _nextFeedPoint: 100
     _nextEvolutionPaths:
     - _carnivorousPercentageThreshold: 0.5
       _nextID: 2
@@ -28,7 +29,8 @@ MonoBehaviour:
     _id: 2
     _type: 2
     _attackValue: 0
-    _hitPoint: 0
+    _hitPoint: 1
+    _nextFeedPoint: 0
     _nextEvolutionPaths:
     - _carnivorousPercentageThreshold: 0.58
       _nextID: 4
@@ -40,7 +42,8 @@ MonoBehaviour:
     _id: 3
     _type: 1
     _attackValue: 0
-    _hitPoint: 0
+    _hitPoint: 1
+    _nextFeedPoint: 0
     _nextEvolutionPaths:
     - _carnivorousPercentageThreshold: 0.738
       _nextID: 4
@@ -52,17 +55,20 @@ MonoBehaviour:
     _id: 4
     _type: 2
     _attackValue: 0
-    _hitPoint: 0
+    _hitPoint: 1
+    _nextFeedPoint: 0
     _nextEvolutionPaths: []
   - _name: "3\u6BB5\u968E\u76EE\uFF08\u96D1\u98DF\uFF09"
     _id: 4
     _type: 3
     _attackValue: 0
-    _hitPoint: 0
+    _hitPoint: 1
+    _nextFeedPoint: 0
     _nextEvolutionPaths: []
   - _name: "3\u6BB5\u968E\u76EE\uFF08\u8349\u98DF\uFF09"
     _id: 4
     _type: 1
     _attackValue: 0
     _hitPoint: 0
+    _nextFeedPoint: 0
     _nextEvolutionPaths: []

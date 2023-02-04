@@ -19,16 +19,30 @@ namespace Player
         public int Level { get; private set; } = 1;
 
         /// <summary>
+        /// 現在の餌ポイント
+        /// </summary>
+        public float FeedPoint => _feedPointCarnivorous + _feedPointHerbivore;
+
+        /// <summary>
         /// 進化までのゲージ割合(0～1)
         /// 1になったら次の段階に進化する
         /// </summary>
-        public float Percentage { get; private set; } = 0;
+        public float Percentage => FeedPoint / _nextFeedPoint;
 
         /// <summary>
         /// ヒットポイント
         /// </summary>
         public float HitPoint { get; private set; } = 100; // TODO : あとでマスタから読み込むようにする
-        
+
+        // 肉食の餌ポイント
+        private float _feedPointCarnivorous;
+
+        // 草食の餌ポイント
+        private float _feedPointHerbivore;
+
+        // 次の進化に必要な合計餌ポイント
+        private float _nextFeedPoint;
+
         /// <summary>
         /// 進化の形態
         /// </summary>
@@ -82,7 +96,7 @@ namespace Player
         /// ゲームプレイ開始通知
         /// </summary>
         public UnityEvent<PlayerEvolutionMaster.Row> OnStarted { get; } = new();
-        
+
         /// <summary>
         /// レベルが変わった通知
         /// </summary>
@@ -115,7 +129,17 @@ namespace Player
             State = PlayerState.Living;
 
             // 最初は1段階目
-            OnStarted?.Invoke(_master._rows[0]);
+            SetEvolution(1);
+        }
+
+        // 進化の段階指定
+        private void SetEvolution(int id)
+        {
+            var row = Array.Find(_master._rows, x => x._id == id);
+
+            _nextFeedPoint = row._nextFeedPoint;
+
+            OnStarted?.Invoke(row);
         }
 
         // プレイヤー自身にダメージ与える(内部的に使う想定)
@@ -134,12 +158,15 @@ namespace Player
                 OnDead?.Invoke();
             }
         }
-        
+
         // 餌を食べる
         // TODO : 引数に餌オブジェクトを渡せるようにする
-        public void EatFeed()
+        public void EatFeed(FeedBase feed)
         {
-            Percentage += 0.4f;
+            // TODO : 後からパラメータ戻す
+            // _feedPointCarnivorous += 1;
+            _feedPointCarnivorous += 30;
+            print($"Percentage = {Percentage}");
 
             if (Percentage >= 1)
             {
@@ -147,7 +174,10 @@ namespace Player
                 {
                     // レベルアップ処理
                     Level++;
-                    Percentage = 0;
+
+                    _feedPointCarnivorous = 0;
+                    _feedPointHerbivore = 0;
+
                     OnLevelChanged?.Invoke(Level);
                 }
             }
