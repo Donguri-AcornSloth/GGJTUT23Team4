@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/// <summary>
+/// 二次元リスト生成のクラス
+/// </summary>
+[System.SerializableAttribute]
+public class ValueList
+{
+    public List<int> List = new List<int>();
+
+    public ValueList(List<int> list)
+    {
+        List = list;
+    }
+}
+
+public class BackGroundBase : MonoBehaviour, IInitialize
+{
+    public List<ValueList> BGLists = new List<ValueList>(); //背景として生成するオブジェクトのリスト
+    [SerializeField]
+    protected List<Color> BGColors = new List<Color>(); //背景の色のリスト
+
+    [SerializeField]
+    protected Camera cam; //カメラ
+
+    [SerializeField]
+    protected float BGChangeTime; //背景が切り替わるフレーム数
+
+    
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
