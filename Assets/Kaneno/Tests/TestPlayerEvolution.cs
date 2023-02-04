@@ -10,7 +10,13 @@ namespace Player.Tests
             var keyboard = Keyboard.current;
             if (keyboard == null) return;
 
-            // デバッグでプレイヤーの進化情報を出力
+            // ゲーム開始
+            if (keyboard.spaceKey.wasPressedThisFrame)
+            {
+                PlayerEvolution.Instance.Initialize();
+            }
+
+            // プレイヤーの進化情報を出力
             if (keyboard.enterKey.wasPressedThisFrame)
             {
                 Debug.Log($"PlayerEvolution.Instance : {PlayerEvolution.Instance}");

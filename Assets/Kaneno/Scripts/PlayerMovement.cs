@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +19,9 @@ namespace Player
 
         private void Update()
         {
+            if (PlayerEvolution.Instance.State != PlayerEvolution.PlayerState.Living)
+                return;
+
             var velocity = _inputMove * _speed;
             transform.localPosition += (Vector3) velocity * Time.deltaTime;
         }
