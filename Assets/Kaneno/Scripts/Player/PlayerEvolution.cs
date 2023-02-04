@@ -32,7 +32,17 @@ namespace Player
         /// <summary>
         /// ヒットポイント
         /// </summary>
-        public float HitPoint { get; private set; } = 100; // TODO : あとでマスタから読み込むようにする
+        public float HitPoint { get; private set; } = 80; // TODO : あとでマスタから読み込むようにする
+
+        /// <summary>
+        /// ヒットポイントの最大値
+        /// </summary>
+        public float HitPointMax { get; private set; } = 100;
+
+        /// <summary>
+        /// ヒットポイントの割合
+        /// </summary>
+        public float HitPointPercentage => HitPoint / HitPointMax;
 
         // 現在の形態ID
         private int _evolutionID;
