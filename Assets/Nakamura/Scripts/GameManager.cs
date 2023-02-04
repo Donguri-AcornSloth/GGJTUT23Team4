@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Player;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,17 +16,13 @@ public class GameManager : MonoBehaviour
     
     private static GameManager _instance;
     private StateEnum _currentState;
-
-    /**
+    
     [SerializeField]
-    private PlayerController _player = null;
-    **/
+    private PlayerMovement _player = null;
 
-    private static GameManager Instance { get { return _instance; } }
+    public static GameManager Instance { get { return _instance; } }
     public StateEnum CurrentState { get { return _currentState; } }
-    /**
-    public PlayerController Player { get { return _player; } }
-    **/
+    public PlayerMovement Player { get { return _player; } }
 
     private void Awake()
     {
@@ -42,6 +39,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerEvolution.Instance.OnDead.AddListener(SetGameOver);
         ChangeState(StateEnum.StartMenu);
     }
 
@@ -51,8 +49,9 @@ public class GameManager : MonoBehaviour
         UpdateState();
     }
 
-    void ChangeState(StateEnum nextState)
+    public void ChangeState(StateEnum nextState)
     {
+        Debug.Log("ゲームモードが" + nextState + "に変わりました");
         _currentState = nextState;
 
         //遷移したとき、最初の一回だけ呼ばれる処理
@@ -60,7 +59,8 @@ public class GameManager : MonoBehaviour
         {
             case StateEnum.StartMenu:
                 {
-
+                    //とりあえずすぐにPlayに移るように
+                    ChangeState(StateEnum.Play);
                 }
                 break;
             case StateEnum.Play:
@@ -97,15 +97,22 @@ public class GameManager : MonoBehaviour
                 break;
             case StateEnum.Clear:
                 {
-
+                    if (Input.GetKeyDown(KeyCode.R))
+                        ChangeState(StateEnum.StartMenu);
                 }
                 break;
             case StateEnum.GameOver:
                 {
-
+                    if (Input.GetKeyDown(KeyCode.R))
+                        ChangeState(StateEnum.StartMenu);
                 }
                 break;
         }
+    }
+
+    public void SetGameOver()
+    {
+        ChangeState(StateEnum.GameOver);
     }
 
     /// <summary>
