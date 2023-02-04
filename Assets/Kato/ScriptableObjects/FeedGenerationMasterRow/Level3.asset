@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c75b62995d83fb046b0623ba0c521493, type: 3}
-  m_Name: Level2
+  m_Name: Level3
   m_EditorClassIdentifier: 
   level: 1
-  maxFeeds: 100
-  repopNum: 30
-  freqency: 2
+  maxFeeds: 200
+  repopNum: 40
+  freqency: 1
   generatingFeeds:
-  - {fileID: 7487336257200857909, guid: eb5f64d7e85b92540996cae3f41fccb3, type: 3}
-  - {fileID: 7487336257200857909, guid: eb5f64d7e85b92540996cae3f41fccb3, type: 3}
-  - {fileID: 7877000931959795072, guid: ba05024c282e4c041b4badfa9dae23f3, type: 3}
-  - {fileID: 7877000931959795072, guid: 11004228a8fa66e4fa5fee1ca26ecd57, type: 3}
+  - {fileID: 7487336257200857909, guid: cc847f8f2ed65c24986f1914aabea4e1, type: 3}
+  - {fileID: 7487336257200857909, guid: cc847f8f2ed65c24986f1914aabea4e1, type: 3}
+  - {fileID: 7877000931959795072, guid: 2517af35c7f1d6045937125abf96b4bb, type: 3}
+  - {fileID: 7877000931959795072, guid: 7450baccb97f2fa44899ab0da46807bd, type: 3}

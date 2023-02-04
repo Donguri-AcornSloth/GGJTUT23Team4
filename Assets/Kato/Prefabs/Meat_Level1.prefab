@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 8210110268594482726}
   - component: {fileID: 7778972581240284569}
   - component: {fileID: 3777167536339189889}
-  - component: {fileID: -1052008709514522942}
+  - component: {fileID: 7817714501474793926}
   m_Layer: 0
   m_Name: Meat_Level1
-  m_TagString: Untagged
+  m_TagString: Feed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3b2aacd421adaca4dae2f6fd80a09728, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _feedType: 1
   _feedPoison: 1
---- !u!58 &-1052008709514522942
+  _fGen: {fileID: 0}
+--- !u!58 &7817714501474793926
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,4 +116,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.32

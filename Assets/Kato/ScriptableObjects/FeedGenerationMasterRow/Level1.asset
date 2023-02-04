@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75b62995d83fb046b0623ba0c521493, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: 
-  level: 1
+  level: 0
   maxFeeds: 100
   repopNum: 30
-  freqency: 10
+  freqency: 3
   generatingFeeds:
-  - {fileID: 7487336257200857909, guid: eb5f64d7e85b92540996cae3f41fccb3, type: 3}
-  - {fileID: 7487336257200857909, guid: eb5f64d7e85b92540996cae3f41fccb3, type: 3}
-  - {fileID: 7877000931959795072, guid: ba05024c282e4c041b4badfa9dae23f3, type: 3}
-  - {fileID: 7877000931959795072, guid: 11004228a8fa66e4fa5fee1ca26ecd57, type: 3}
+  - {fileID: 7487336257200857909, guid: 5e47cc9500584bc4e8794d927fbedc42, type: 3}
+  - {fileID: 7877000931959795072, guid: f72a3297e31fd4e41bbae51691deef33, type: 3}
