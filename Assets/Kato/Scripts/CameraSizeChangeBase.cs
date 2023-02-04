@@ -8,6 +8,8 @@ public class CameraSizeChangeBase : MonoBehaviour
     [SerializeField]
     protected CinemachineVirtualCamera vcam;
     [SerializeField]
+    protected Camera cam; //ÉJÉÅÉâ
+    [SerializeField]
     protected CameraSizeChangeMaster CSCM;
 
     [SerializeField]
