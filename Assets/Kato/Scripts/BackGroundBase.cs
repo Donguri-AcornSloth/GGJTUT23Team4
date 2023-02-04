@@ -9,9 +9,9 @@ using UnityEngine;
 [System.SerializableAttribute]
 public class ValueList
 {
-    public List<int> List = new List<int>();
+    public List<GameObject> List;
 
-    public ValueList(List<int> list)
+    public ValueList(List<GameObject> list)
     {
         List = list;
     }
