@@ -14,7 +14,7 @@ namespace Player
         {
             if (context.started) return;
 
-            _inputMove = context.ReadValue<Vector2>();
+            // _inputMove = context.ReadValue<Vector2>();
         }
 
         private void Awake()
@@ -28,6 +28,11 @@ namespace Player
             if (PlayerEvolution.Instance.State != PlayerEvolution.PlayerState.Living)
                 return;
 
+            _inputMove = new Vector2(
+                Input.GetAxis("Horizontal"),
+                Input.GetAxis("Vertical")
+            );
+            
             var velocity = _inputMove * _speed;
             transform.localPosition += (Vector3) velocity * Time.deltaTime;
         }
