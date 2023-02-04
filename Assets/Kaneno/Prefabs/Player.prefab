@@ -1512,6 +1512,12 @@ MonoBehaviour:
     _animation: {fileID: 7305494639364863033}
   - _id: 6
     _animation: {fileID: 6349036102028795539}
+  - _id: 7
+    _animation: {fileID: 7832593109728561727}
+  - _id: 8
+    _animation: {fileID: 5362497814708886234}
+  - _id: 9
+    _animation: {fileID: 5711133610548316155}
 --- !u!1 &8153162408301456053
 GameObject:
   m_ObjectHideFlags: 0
