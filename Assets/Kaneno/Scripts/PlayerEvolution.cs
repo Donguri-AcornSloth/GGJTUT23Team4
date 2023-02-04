@@ -6,6 +6,8 @@ namespace Player
 {
     public class PlayerEvolution : MonoBehaviour, IInitialize
     {
+        [SerializeField] private PlayerEvolutionMaster _master;
+        
         public static PlayerEvolution Instance { get; private set; }
 
         #region 初期化
