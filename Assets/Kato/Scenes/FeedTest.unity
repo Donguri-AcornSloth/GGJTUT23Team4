@@ -3715,6 +3715,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 623187079}
+  - component: {fileID: 623187080}
   m_Layer: 0
   m_Name: CameraSizeChange
   m_TagString: Untagged
@@ -3737,6 +3738,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &623187080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623187078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 779a7872b219c0641a6487af2c5b5fb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vcam: {fileID: 417580566}
+  CSCM: {fileID: 11400000, guid: 5f1889ab3dc9b7f4fb8aee430c123503, type: 2}
+  CSChanging: 0
+  CSChangeTime: 3
+  evolStage: 0
+  beforeEvolStage: 0
 --- !u!1001 &641375510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6512,6 +6531,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1216066319}
+    - target: {fileID: 1445565125949637050, guid: 1490ef68cf1434a439f5425dc1e981c7, type: 3}
+      propertyPath: BGChangeTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1445565125949637050, guid: 1490ef68cf1434a439f5425dc1e981c7, type: 3}
       propertyPath: postProcessVolume
       value: 
