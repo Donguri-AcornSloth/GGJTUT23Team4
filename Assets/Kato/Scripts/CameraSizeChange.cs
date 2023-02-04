@@ -9,10 +9,10 @@ using UnityEngine.U2D;
 public class CameraSizeChange : CameraSizeChangeBase
 {
     [SerializeField]
-    private int evolStage; //ÅV‚Ìi‰»’iŠK
+    private int evolStage; //ï¿½ÅVï¿½Ìiï¿½ï¿½ï¿½iï¿½K
     [SerializeField]
-    private int beforeEvolStage; //‘O‚Ìi‰»’iŠK
-    private float CSChangeTimes; //”wŒi‚ªØ‚è‘Ö‚í‚éƒtƒŒ[ƒ€”
+    private int beforeEvolStage; //ï¿½Oï¿½Ìiï¿½ï¿½ï¿½iï¿½K
+    private float CSChangeTimes; //ï¿½wï¿½iï¿½ï¿½ï¿½Ø‚ï¿½Ö‚ï¿½ï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,8 @@ public class CameraSizeChange : CameraSizeChangeBase
     // Update is called once per frame
     void FixedUpdate()
     {
-        CamSizeChange();
+        if (GameManager.Instance.CurrentState == GameManager.StateEnum.Play)
+            CamSizeChange();
     }
 
     private void CamSizeChangeSwitch(int level)

@@ -156,6 +156,7 @@ namespace Player
             SetEvolution(1);
 
             OnStarted?.Invoke();
+            OnLevelChanged?.Invoke(1);
         }
 
         // 進化の段階指定
