@@ -16,8 +16,8 @@ MonoBehaviour:
   - List:
     - {fileID: 793744982180866949, guid: 94edfae2932a3b248a2e80ada882722f, type: 3}
     - {fileID: 7803866378313755853, guid: 5bc66aff438e1f44f8ec3ec93b87fd5d, type: 3}
-  - List: []
-  BGColors: {r: 0.20683512, g: 0.7924528, b: 0.2723588, a: 1}
+  BGColors: {r: 0.58176094, g: 1, b: 0.6266725, a: 1}
   saturation: 0
   colorFilter: {r: 1, g: 1, b: 1, a: 0}
   focusDistance: 10
+  causticGenerateTime: 5

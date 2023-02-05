@@ -14,4 +14,5 @@ public class BackGroundGenerationMasterRow : ScriptableObject
     [ColorUsage(true, true), SerializeField]
     public Color colorFilter; //背景のフィルターの色
     public float focusDistance; //被写界深度
+    public float causticGenerateTime; //コースティックの生成感覚
 }
