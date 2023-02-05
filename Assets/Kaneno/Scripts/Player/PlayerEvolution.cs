@@ -50,7 +50,7 @@ namespace Player
         public float AttackValue { get; private set; }
 
         // 現在の形態ID
-        private int _evolutionID;
+        public int EvolutionID { get; private set; }
 
         // 肉食の餌ポイント
         private float _feedPointCarnivorous;
@@ -130,6 +130,11 @@ namespace Player
         /// </summary>
         public UnityEvent OnDead { get; } = new();
 
+        /// <summary>
+        /// 餌食べた通知
+        /// </summary>
+        public UnityEvent OnEatFeed { get; } = new();
+
         #endregion
 
         #region メッセージ
@@ -166,7 +171,7 @@ namespace Player
 
             var row = Array.Find(_master._rows, x => x._id == id);
 
-            _evolutionID = row._id;
+            EvolutionID = row._id;
             _nextFeedPoint = row._nextFeedPoint;
 
             _feedPointCarnivorous = 0;
@@ -223,7 +228,7 @@ namespace Player
                     var rate = _feedPointCarnivorous / FeedPoint;
                     print($"肉食の餌割合 : {rate}");
 
-                    var row = _master.GetRow(_evolutionID);
+                    var row = _master.GetRow(EvolutionID);
                     for (var i = 0; i < row._nextEvolutionPaths.Length; i++)
                     {
                         var path = row._nextEvolutionPaths[i];
@@ -243,6 +248,8 @@ namespace Player
                     GameManager.Instance.ChangeState(GameManager.StateEnum.Clear);
                 }
             }
+            
+            OnEatFeed?.Invoke();
         }
 
         #endregion
