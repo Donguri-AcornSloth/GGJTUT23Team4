@@ -9,7 +9,8 @@ public class CausticBase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sr = GetComponent<SpriteRenderer>();   
+        sr = GetComponent<SpriteRenderer>();
+        sr.color -= new Color(0f, 0f, 0f, 1f);
     }
 
     // Update is called once per frame
