@@ -36,6 +36,12 @@ public class FeedBase : MonoBehaviour
         
     }
 
+    private void OnBecameInvisible()
+    {
+        _fGen.generatedFeeds.Remove(this.gameObject);
+        Destroy(this.gameObject);
+    }
+
     /// <summary>
     /// 餌自体がPlayerに触れた時の処理
     /// </summary>

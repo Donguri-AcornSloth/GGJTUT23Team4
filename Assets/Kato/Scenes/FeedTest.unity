@@ -12217,5 +12217,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyGenerator
       objectReference: {fileID: 0}
+    - target: {fileID: 8737514030085310952, guid: 993ef78d178c67b4db06f3731fd0a5c3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 993ef78d178c67b4db06f3731fd0a5c3, type: 3}
