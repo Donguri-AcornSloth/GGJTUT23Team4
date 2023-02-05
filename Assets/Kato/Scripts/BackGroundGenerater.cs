@@ -144,7 +144,8 @@ public class BackGroundGenerater : BackGroundBase, IInitialize
             var rot = Random.Range(0.0f, 360.0f);
             GameObject caustic = Instantiate(BGGM.BGGMRows[PlayerEvolution.Instance.Level - 1].BGLists[0].List[r]);
             caustic.transform.rotation = Quaternion.Euler(0, 0, rot);
-            caustic.transform.localPosition =  new Vector3(5.0f, 0.0f, 0.0f);
+            caustic.transform.position = player.position;
+            caustic.transform.localPosition += new Vector3(5.0f, 0.0f, 0.0f);
             caustics.Add(caustic);
             causticTimeCount = 0f;
         }
