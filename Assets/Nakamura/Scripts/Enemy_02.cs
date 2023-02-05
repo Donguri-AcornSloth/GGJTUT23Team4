@@ -11,8 +11,6 @@ public class Enemy_02 : EnemyBase
     [SerializeField]
     private float _moveTime = 3;
     [SerializeField]
-    private float _turnSpeed = 1;
-    [SerializeField]
     private float _chaseSpeed = 2;
     [SerializeField]
     private float _chaseTurnSpeed = 1;
@@ -20,6 +18,7 @@ public class Enemy_02 : EnemyBase
     private GameObject _sprite;
 
     private Timer _moveTimer = new Timer();
+    private GameObject _targetObj;
 
     // Start is called before the first frame update
     void Start()
@@ -36,12 +35,21 @@ public class Enemy_02 : EnemyBase
         {
             if (_stateManager.CurrentStateType == ActionStateEnum.Chase) return;
 
+            _targetObj = _player.gameObject;
             _stateManager.ForceStop();
             _stateManager.AddState(ActionStateEnum.Chase);
         }
 
         DeathspownTimerUpdate();
         UpdateState();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (_stateManager.CurrentStateType == ActionStateEnum.Chase) return;
+
+        _targetObj = other.gameObject;
+        _stateManager.ForceStop();
+        _stateManager.AddState(ActionStateEnum.Chase);
     }
 
     protected override void SelectActionState()
@@ -99,7 +107,7 @@ public class Enemy_02 : EnemyBase
 
         transform.position += transform.up * _chaseSpeed * Time.deltaTime;
         **/
-        _moveDirection = _player.gameObject.transform.position - transform.position;
+        _moveDirection = _targetObj.transform.position - transform.position;
         _moveDirection.Normalize();
         if (_moveDirection.x >= 0)
         {
@@ -115,6 +123,6 @@ public class Enemy_02 : EnemyBase
         }
         _rigidbody.velocity = _moveDirection * _chaseSpeed;
 
-        return InCircle(_player.gameObject.transform.position, _raderRadius);
+        return InCircle(_targetObj.transform.position, _raderRadius);
     }
 }

@@ -9,7 +9,10 @@ public class EnemyBase : MonoBehaviour
     {
         Enemy_01,
         Enemy_02,
-        Enemy_03
+        Enemy_03,
+        Enemy_04,
+        Enemy_05,
+        Enemy_06
     }
 
     public enum StateEnum
@@ -83,7 +86,7 @@ public class EnemyBase : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             _stateManager.ForceStop();
             _stateManager.AddState(ActionStateEnum.Idle);
@@ -207,7 +210,6 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void OnStateIdleEnter()
     {
-        Debug.Log("Enter");
         _idleTimer.ResetTimer(_idleTime);
     }
     protected virtual bool OnStateIdleUpdate()
@@ -218,7 +220,7 @@ public class EnemyBase : MonoBehaviour
     }
     protected virtual void OnStateIdleExit()
     {
-        Debug.Log("Exit");
+        
     }
     protected virtual void OnStateMoveEnter()
     {
