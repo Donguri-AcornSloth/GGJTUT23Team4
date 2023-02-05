@@ -136,13 +136,13 @@ MonoBehaviour:
   _attackValue: 100
   _currentHP: 100
   _viewRaderCircle: 1
-  _raderRadius: 8.03
+  _raderRadius: 5
   _turnTime: 1
-  _idleTime: 3
+  _idleTime: 5
   _rigidbody: {fileID: 3713972212212319758}
-  _moveSpeed: 1
+  _moveSpeed: 0.6
   _moveTime: 2
-  _chaseSpeed: 3
+  _chaseSpeed: 1
   _chaseTurnSpeed: 1
   _targetPosUpdateInterval: 0.5
 --- !u!50 &3713972212212319758

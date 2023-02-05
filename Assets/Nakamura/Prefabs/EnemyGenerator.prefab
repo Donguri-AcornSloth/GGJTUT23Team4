@@ -56,8 +56,8 @@ MonoBehaviour:
   _firstGenerationMaxEnemy: 6
   _secondGenerationMaxEnemy: 6
   _thirdGenerationMaxEnemy: 6
-  _spownInterval: 2
+  _spownInterval: 5
   _viewSpownCircle: 0
-  _spownMinRange: 10
-  _spownMaxRange: 30
-  _deathspownTime: 20
+  _spownMinRange: 5
+  _spownMaxRange: 6
+  _deathspownTime: 10

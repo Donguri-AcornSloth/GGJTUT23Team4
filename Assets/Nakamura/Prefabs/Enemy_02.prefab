@@ -53,13 +53,13 @@ MonoBehaviour:
   _attackValue: 100
   _currentHP: 100
   _viewRaderCircle: 1
-  _raderRadius: 5.6
+  _raderRadius: 5
   _turnTime: 3
-  _idleTime: 3
+  _idleTime: 5
   _rigidbody: {fileID: 7983496091226709171}
-  _moveSpeed: 1
+  _moveSpeed: 0.5
   _moveTime: 3
-  _chaseSpeed: 2
+  _chaseSpeed: 0.8
   _chaseTurnSpeed: 1
   _sprite: {fileID: 7983496092094794244}
 --- !u!61 &7983496091226709164

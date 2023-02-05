@@ -132,13 +132,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyType: 0
+  _evolutionType: 0
   _attackValue: 100
   _currentHP: 100
   _viewRaderCircle: 1
   _raderRadius: 2
   _turnTime: 2
+  _idleTime: 3
   _rigidbody: {fileID: 3713972212212319758}
-  _moveSpeed: 1
+  _moveSpeed: 0.5
   _moveTime: 3
 --- !u!50 &3713972212212319758
 Rigidbody2D:
