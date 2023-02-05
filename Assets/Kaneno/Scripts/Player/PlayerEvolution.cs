@@ -179,6 +179,7 @@ namespace Player
 
             HitPointMax = row._hitPoint;
             HitPoint = row._hitPoint;
+            AttackValue = row._attackValue;
 
             Type = row._type;
 
