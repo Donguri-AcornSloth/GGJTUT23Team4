@@ -19,8 +19,8 @@ MonoBehaviour:
     _type: 0
     _attackValue: 0
     _hitPoint: 500
-    _nextFeedPoint: 100
-    _movementSpeed: 1
+    _nextFeedPoint: 750
+    _movementSpeed: 0.6
     _nextEvolutionPaths:
     - _carnivorousRateThreshold: 0.5
       _nextID: 2
@@ -31,7 +31,7 @@ MonoBehaviour:
     _type: 2
     _attackValue: 100
     _hitPoint: 500
-    _nextFeedPoint: 100
+    _nextFeedPoint: 750
     _movementSpeed: 1
     _nextEvolutionPaths:
     - _carnivorousRateThreshold: 0.6
@@ -43,9 +43,9 @@ MonoBehaviour:
   - _name: "2\u6BB5\u968E\u76EE\uFF08\u8349\u98DF\uFF09"
     _id: 3
     _type: 1
-    _attackValue: 100
+    _attackValue: 0
     _hitPoint: 500
-    _nextFeedPoint: 100
+    _nextFeedPoint: 750
     _movementSpeed: 1.2
     _nextEvolutionPaths:
     - _carnivorousRateThreshold: 0.6
@@ -59,8 +59,8 @@ MonoBehaviour:
     _type: 2
     _attackValue: 100
     _hitPoint: 500
-    _nextFeedPoint: 150
-    _movementSpeed: 0.8
+    _nextFeedPoint: 1050
+    _movementSpeed: 1.4
     _nextEvolutionPaths:
     - _carnivorousRateThreshold: 0.7
       _nextID: 7
@@ -73,8 +73,8 @@ MonoBehaviour:
     _type: 3
     _attackValue: 100
     _hitPoint: 500
-    _nextFeedPoint: 150
-    _movementSpeed: 1
+    _nextFeedPoint: 1050
+    _movementSpeed: 1.2
     _nextEvolutionPaths:
     - _carnivorousRateThreshold: 0.7
       _nextID: 7
@@ -85,10 +85,10 @@ MonoBehaviour:
   - _name: "3\u6BB5\u968E\u76EE\uFF08\u8349\u98DF\uFF09"
     _id: 6
     _type: 1
-    _attackValue: 100
+    _attackValue: 0
     _hitPoint: 500
-    _nextFeedPoint: 150
-    _movementSpeed: 1.5
+    _nextFeedPoint: 1050
+    _movementSpeed: 1.6
     _nextEvolutionPaths:
     - _carnivorousRateThreshold: 0.7
       _nextID: 7
@@ -101,22 +101,22 @@ MonoBehaviour:
     _type: 2
     _attackValue: 100
     _hitPoint: 400
-    _nextFeedPoint: 200
-    _movementSpeed: 0.7
+    _nextFeedPoint: 1200
+    _movementSpeed: 1.6
     _nextEvolutionPaths: []
   - _name: "4\u6BB5\u968E\u76EE\uFF08\u96D1\u98DF\uFF09"
     _id: 8
     _type: 3
     _attackValue: 100
     _hitPoint: 500
-    _nextFeedPoint: 200
-    _movementSpeed: 1.2
+    _nextFeedPoint: 1200
+    _movementSpeed: 1.5
     _nextEvolutionPaths: []
   - _name: "4\u6BB5\u968E\u76EE\uFF08\u8349\u98DF\uFF09"
     _id: 9
     _type: 1
     _attackValue: 0
     _hitPoint: 500
-    _nextFeedPoint: 200
-    _movementSpeed: 1.7
+    _nextFeedPoint: 1200
+    _movementSpeed: 2
     _nextEvolutionPaths: []

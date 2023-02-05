@@ -11,28 +11,69 @@ namespace Player
             var feed = col.GetComponent<FeedBase>();
             if (feed != null)
             {
-                // 餌を食べる処理実施
-                feed.PickUp();
-                PlayerEvolution.Instance.EatFeed(feed);
+                // 餌を食べるロジック
+                if (PlayerEvolution.Instance.Level <= 2)
+                {
+                    // 第２形態以前はどれでも食べられる
+                    feed.PickUp();
+                    PlayerEvolution.Instance.EatFeed(feed);
+                }
+                else
+                {
+                    // 第３形態以降は食べられる餌が限られる
+                    switch (PlayerEvolution.Instance.Type)
+                    {
+                        case PlayerEvolution.EvolutionType.Carnivorous:
+                            if (feed._feedType == FeedBase.FeedType.肉)
+                            {
+                                feed.PickUp();
+                                PlayerEvolution.Instance.EatFeed(feed);
+                            }
+
+                            break;
+
+                        case PlayerEvolution.EvolutionType.Omnivorous:
+                            feed.PickUp();
+                            PlayerEvolution.Instance.EatFeed(feed);
+                            break;
+
+                        case PlayerEvolution.EvolutionType.Herbivore:
+                            if (feed._feedType == FeedBase.FeedType.草)
+                            {
+                                feed.PickUp();
+                                PlayerEvolution.Instance.EatFeed(feed);
+                            }
+
+                            break;
+                    }
+                }
             }
 
             // 敵の判定処理
             var enemy = col.GetComponent<EnemyBase>();
             if (enemy != null)
             {
-                print($"enemy.AttackValue = {enemy.AttackValue}");
-                
                 enemy.ApplyDamage(PlayerEvolution.Instance.AttackValue);
-                PlayerEvolution.Instance.ApplyDamage(enemy.AttackValue);    
+                PlayerEvolution.Instance.ApplyDamage(enemy.AttackValue);
+
+                // 敵を食べるロジック
+                switch (PlayerEvolution.Instance.Type)
+                {
+                    case PlayerEvolution.EvolutionType.Carnivorous:
+                        // 肉食なら自分の世代以下の生物食べられる
+                        PlayerEvolution.Instance.EatEnemy();
+                        break;
+
+                    case PlayerEvolution.EvolutionType.Omnivorous:
+                        // 肉食なら自分の世代未満の生物食べられる
+                        PlayerEvolution.Instance.EatEnemy();
+                        break;
+
+                    default:
+                        // それ以外は無理
+                        break;
+                }
             }
         }
-
-        // private void Update()
-        // {
-        //     if (Input.GetKeyDown(KeyCode.Alpha1))
-        //     {
-        //         PlayerEvolution.Instance.ApplyDamage(100000);
-        //     }
-        // }
     }
 }
