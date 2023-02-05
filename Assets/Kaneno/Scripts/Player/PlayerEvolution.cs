@@ -43,7 +43,7 @@ namespace Player
         /// ヒットポイントの割合
         /// </summary>
         public float HitPointPercentage => HitPoint / HitPointMax;
-        
+
         /// <summary>
         /// 攻撃力
         /// </summary>
@@ -156,6 +156,7 @@ namespace Player
             SetEvolution(1);
 
             OnStarted?.Invoke();
+            OnLevelChanged?.Invoke(1);
         }
 
         // 進化の段階指定
@@ -170,6 +171,9 @@ namespace Player
 
             _feedPointCarnivorous = 0;
             _feedPointHerbivore = 0;
+
+            HitPointMax = row._hitPoint;
+            HitPoint = row._hitPoint;
 
             OnEvolution?.Invoke(row);
         }
@@ -231,6 +235,12 @@ namespace Player
                             break;
                         }
                     }
+                }
+                else
+                {
+                    // ステージクリア
+                    State = PlayerState.None;
+                    GameManager.Instance.ChangeState(GameManager.StateEnum.Clear);
                 }
             }
         }

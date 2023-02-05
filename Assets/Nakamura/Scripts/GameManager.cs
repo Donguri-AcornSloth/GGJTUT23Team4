@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Player;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class GameManager : MonoBehaviour
     public StateEnum CurrentState { get { return _currentState; } }
     public PlayerMovement Player { get { return _player; } }
     public EnemyGenerator EnemyGenerator { get { return _enemyGenerator; } }
+
+    public UnityEvent<StateEnum> OnStateChanged { get; } = new();
 
     private void Awake()
     {
@@ -54,16 +57,16 @@ public class GameManager : MonoBehaviour
 
     public void ChangeState(StateEnum nextState)
     {
-        Debug.Log("ƒQ[ƒ€ƒ‚[ƒh‚ª" + nextState + "‚É•Ï‚í‚è‚Ü‚µ‚½");
+        Debug.Log("ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½hï¿½ï¿½" + nextState + "ï¿½É•Ï‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½");
         _currentState = nextState;
 
-        //‘JˆÚ‚µ‚½‚Æ‚«AÅ‰‚Ìˆê‰ñ‚¾‚¯ŒÄ‚Î‚ê‚éˆ—
+        //ï¿½Jï¿½Ú‚ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Aï¿½Åï¿½ï¿½Ìˆï¿½ñ‚¾‚ï¿½ï¿½Ä‚Î‚ï¿½éˆï¿½ï¿½
         switch (_currentState)
         {
             case StateEnum.StartMenu:
                 {
-                    //‚Æ‚è‚ ‚¦‚¸‚·‚®‚ÉPlay‚ÉˆÚ‚é‚æ‚¤‚É
-                    ChangeState(StateEnum.Play);
+                    //ï¿½Æ‚è‚ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Playï¿½ÉˆÚ‚ï¿½æ‚¤ï¿½ï¿½
+                    // ChangeState(StateEnum.Play);
                 }
                 break;
             case StateEnum.Play:
@@ -82,10 +85,12 @@ public class GameManager : MonoBehaviour
                 }
                 break;
         }
+        
+        OnStateChanged?.Invoke(nextState);
     }
     void UpdateState()
     {
-        //‚»‚Ìó‘Ô’†‚¸‚Á‚ÆŒÄ‚Î‚ê‚éˆ—
+        //ï¿½ï¿½ï¿½Ìï¿½Ô’ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÆŒÄ‚Î‚ï¿½éˆï¿½ï¿½
         switch (_currentState)
         {
             case StateEnum.StartMenu:
@@ -119,7 +124,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// IInitialize‚ğŒp³‚µ‚½‘S‚Ä‚ÌƒIƒuƒWƒFƒNƒg‚ğ‰Šú‰»‚·‚é
+    /// IInitializeï¿½ï¿½ï¿½pï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Sï¿½Ä‚ÌƒIï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     private void Initialize()
     {

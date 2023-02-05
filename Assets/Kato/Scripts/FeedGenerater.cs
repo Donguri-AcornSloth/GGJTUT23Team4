@@ -24,6 +24,14 @@ public class FeedGenerater : MonoBehaviour, IInitialize
     Timer _generateTimer = new Timer(1.0f);
     private int level;
 
+    private enum State
+    {
+        Initialized,
+        Playing,
+    }
+
+    private State state = State.Initialized;
+
     public void Initialize()
     {
         player = GameObject.Find("Player").GetComponent<Transform>();
@@ -37,6 +45,8 @@ public class FeedGenerater : MonoBehaviour, IInitialize
             
             generatedFeeds.Clear();
         }
+
+        state = State.Playing;
     }
     // Start is called before the first frame update
     void Start()
@@ -52,6 +62,9 @@ public class FeedGenerater : MonoBehaviour, IInitialize
 
     private void FixedUpdate()
     {
+        if (state != State.Playing)
+            return;
+        
         _generateTimer.Update();
         if (_generateTimer.IsTimeUp)
         {

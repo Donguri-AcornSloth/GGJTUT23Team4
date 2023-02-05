@@ -46,26 +46,24 @@ public class Enemy_02 : EnemyBase
 
     protected override void SelectActionState()
     {
-        //_stateManager.AddState(ActionStateEnum.Turn);
         _stateManager.AddState(ActionStateEnum.Move);
     }
     protected override void OnStateMoveEnter()
     {
         _moveTimer.ResetTimer(_moveTime);
-        float x = Random.Range(-1, 1);
-        float y = Random.Range(-1, 1);
-        _moveDirection = new Vector2(x, y);
-        Debug.Log(_moveDirection);
+        _moveDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         _moveDirection.Normalize();
-        if(_moveDirection.x > 0)
+        if(_moveDirection.x >= 0)
         {
-            Debug.Log("‰E");
-            _sprite.transform.Rotate(0, 180, 0);
+            Vector3 scale = _sprite.transform.localScale;
+            scale.x = -1.5f;
+            _sprite.transform.localScale = scale;
         }
         else
         {
-            Debug.Log("¶");
-            _sprite.transform.Rotate(0, 0, 0);
+            Vector3 scale = _sprite.transform.localScale;
+            scale.x = 1.5f;
+            _sprite.transform.localScale = scale;
         }
     }
     protected override bool OnStateMoveUpdate()
@@ -75,6 +73,10 @@ public class Enemy_02 : EnemyBase
         _moveTimer.Update();
 
         return _moveTimer.IsTimeUp;
+    }
+    protected override void OnStateIdleExit()
+    {
+        _rigidbody.velocity = Vector2.zero;
     }
     protected override bool OnStateChaseUpdate()
     {
@@ -97,6 +99,22 @@ public class Enemy_02 : EnemyBase
 
         transform.position += transform.up * _chaseSpeed * Time.deltaTime;
         **/
+        _moveDirection = _player.gameObject.transform.position - transform.position;
+        _moveDirection.Normalize();
+        if (_moveDirection.x >= 0)
+        {
+            Vector3 scale = _sprite.transform.localScale;
+            scale.x = -1.5f;
+            _sprite.transform.localScale = scale;
+        }
+        else
+        {
+            Vector3 scale = _sprite.transform.localScale;
+            scale.x = 1.5f;
+            _sprite.transform.localScale = scale;
+        }
+        _rigidbody.velocity = _moveDirection * _chaseSpeed;
+
         return InCircle(_player.gameObject.transform.position, _raderRadius);
     }
 }

@@ -18,7 +18,7 @@ MonoBehaviour:
     _id: 1
     _type: 0
     _attackValue: 0
-    _hitPoint: 1
+    _hitPoint: 100
     _nextFeedPoint: 100
     _movementSpeed: 1
     _nextEvolutionPaths:
@@ -29,8 +29,8 @@ MonoBehaviour:
   - _name: "2\u6BB5\u968E\u76EE(\u8089\u98DF\uFF09"
     _id: 2
     _type: 2
-    _attackValue: 0
-    _hitPoint: 1
+    _attackValue: 100
+    _hitPoint: 200
     _nextFeedPoint: 100
     _movementSpeed: 1
     _nextEvolutionPaths:
@@ -43,8 +43,8 @@ MonoBehaviour:
   - _name: "2\u6BB5\u968E\u76EE\uFF08\u8349\u98DF\uFF09"
     _id: 3
     _type: 1
-    _attackValue: 0
-    _hitPoint: 1
+    _attackValue: 100
+    _hitPoint: 200
     _nextFeedPoint: 100
     _movementSpeed: 1.2
     _nextEvolutionPaths:
@@ -57,8 +57,8 @@ MonoBehaviour:
   - _name: "3\u6BB5\u968E\u76EE\uFF08\u8089\u98DF\uFF09"
     _id: 4
     _type: 2
-    _attackValue: 0
-    _hitPoint: 1
+    _attackValue: 100
+    _hitPoint: 300
     _nextFeedPoint: 150
     _movementSpeed: 0.8
     _nextEvolutionPaths:
@@ -71,8 +71,8 @@ MonoBehaviour:
   - _name: "3\u6BB5\u968E\u76EE\uFF08\u96D1\u98DF\uFF09"
     _id: 5
     _type: 3
-    _attackValue: 0
-    _hitPoint: 1
+    _attackValue: 100
+    _hitPoint: 300
     _nextFeedPoint: 150
     _movementSpeed: 1
     _nextEvolutionPaths:
@@ -85,8 +85,8 @@ MonoBehaviour:
   - _name: "3\u6BB5\u968E\u76EE\uFF08\u8349\u98DF\uFF09"
     _id: 6
     _type: 1
-    _attackValue: 0
-    _hitPoint: 1
+    _attackValue: 100
+    _hitPoint: 300
     _nextFeedPoint: 150
     _movementSpeed: 1.5
     _nextEvolutionPaths:
@@ -99,16 +99,16 @@ MonoBehaviour:
   - _name: "4\u6BB5\u968E\u76EE\uFF08\u8089\u98DF\uFF09"
     _id: 7
     _type: 2
-    _attackValue: 0
-    _hitPoint: 1
+    _attackValue: 100
+    _hitPoint: 400
     _nextFeedPoint: 200
     _movementSpeed: 0.7
     _nextEvolutionPaths: []
   - _name: "4\u6BB5\u968E\u76EE\uFF08\u96D1\u98DF\uFF09"
     _id: 8
     _type: 3
-    _attackValue: 0
-    _hitPoint: 1
+    _attackValue: 100
+    _hitPoint: 400
     _nextFeedPoint: 200
     _movementSpeed: 1.2
     _nextEvolutionPaths: []
@@ -116,7 +116,7 @@ MonoBehaviour:
     _id: 9
     _type: 1
     _attackValue: 0
-    _hitPoint: 1
+    _hitPoint: 400
     _nextFeedPoint: 200
     _movementSpeed: 1.7
     _nextEvolutionPaths: []
