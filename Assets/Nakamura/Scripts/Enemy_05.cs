@@ -34,7 +34,6 @@ public class Enemy_05 : EnemyBase
         if (InCircle(_player.gameObject.transform.position, _raderRadius))
         {
             if (_stateManager.CurrentStateType == ActionStateEnum.Chase) return;
-            Debug.Log("aaaaaa");
             _targetObj = _player.gameObject;
             _stateManager.ForceStop();
             _stateManager.AddState(ActionStateEnum.Chase);

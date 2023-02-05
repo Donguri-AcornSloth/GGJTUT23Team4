@@ -35,6 +35,8 @@ public class EnemyBase : MonoBehaviour
     [SerializeField]
     protected EnemyTypeEnum _enemyType;
     [SerializeField]
+    public PlayerEvolution.EvolutionType _evolutionType;
+    [SerializeField]
     protected float _attackValue;
     [SerializeField]
     protected float _currentHP;

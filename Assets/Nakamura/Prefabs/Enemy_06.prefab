@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b12f1484d57f0a9428c10d39144067b4, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.8305459, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1a29a11f3a5d19c4a81b79cd200e4825, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -131,7 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b2a3377300ace4fb15cb61c5264dc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyType: 4
+  _enemyType: 5
+  _evolutionType: 3
   _attackValue: 100
   _currentHP: 100
   _viewRaderCircle: 1
@@ -141,11 +142,9 @@ MonoBehaviour:
   _rigidbody: {fileID: 3713972212212319758}
   _moveSpeed: 1
   _moveTime: 2
-  _turnSpeed: 1
   _chaseSpeed: 3
   _chaseTurnSpeed: 1
   _targetPosUpdateInterval: 0.5
-  _sprite: {fileID: 0}
 --- !u!50 &3713972212212319758
 Rigidbody2D:
   serializedVersion: 4
@@ -180,6 +179,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.82, y: 2.08}
+  m_Offset: {x: -0.38, y: 0.28}
+  m_Size: {x: 0.82, y: 1.74}
   m_Direction: 0

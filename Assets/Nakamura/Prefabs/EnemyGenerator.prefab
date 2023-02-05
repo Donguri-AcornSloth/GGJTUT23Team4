@@ -52,6 +52,7 @@ MonoBehaviour:
   _thridGenerationEnemyPfList:
   - {fileID: 4499423910608962202, guid: 80a2d7638e7825547864eae74db0ecf1, type: 3}
   - {fileID: 4499423910608962202, guid: 50bc5fd22ea2fc54ab09a61fd5507a62, type: 3}
+  - {fileID: 4499423910608962202, guid: bdfe322fc39dc6e4abd72421e3053a1f, type: 3}
   _firstGenerationMaxEnemy: 6
   _secondGenerationMaxEnemy: 6
   _thirdGenerationMaxEnemy: 6

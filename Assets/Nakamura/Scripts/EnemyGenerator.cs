@@ -85,6 +85,12 @@ public class EnemyGenerator : MonoBehaviour, IInitialize
                     if(_secondGenerationEnemyList.Count != _secondGenerationMaxEnemy)
                     {
                         int n = Random.Range(0, _secondGenerationEnemyPfList.Count());
+                        var enemyBase = _secondGenerationEnemyPfList[n].GetComponent<EnemyBase>();
+                        if (enemyBase._evolutionType == PlayerEvolution.Instance.Type)
+                        {
+                            GenerateEnemy();
+                            return;
+                        }
                         GameObject enemy = Instantiate(_secondGenerationEnemyPfList[n], GetRandomPos(), Quaternion.identity);
                         _spownCount++;
                         enemy.GetComponent<EnemyBase>().SetId(2, _spownCount);
@@ -97,6 +103,12 @@ public class EnemyGenerator : MonoBehaviour, IInitialize
                     if(_thirdGenerationEnemyList.Count != _thirdGenerationMaxEnemy)
                     {
                         int n = Random.Range(0, _thridGenerationEnemyPfList.Count());
+                        var enemyBase = _thridGenerationEnemyPfList[n].GetComponent<EnemyBase>();
+                        if (enemyBase._evolutionType == PlayerEvolution.Instance.Type)
+                        {
+                            GenerateEnemy();
+                            return;
+                        }
                         GameObject enemy = Instantiate(_thridGenerationEnemyPfList[n], GetRandomPos(), Quaternion.identity);
                         _spownCount++;
                         enemy.GetComponent<EnemyBase>().SetId(3, _spownCount);

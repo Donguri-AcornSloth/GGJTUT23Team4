@@ -95,7 +95,8 @@ public class GameManager : MonoBehaviour
         {
             case StateEnum.StartMenu:
                 {
-
+                    if (Input.GetKeyDown(KeyCode.N))
+                        ChangeState(StateEnum.Play);
                 }
                 break;
             case StateEnum.Play:

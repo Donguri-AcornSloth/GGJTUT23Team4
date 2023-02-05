@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b12f1484d57f0a9428c10d39144067b4, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9a641a091b31c1e4581f60b790b4c970, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyType: 3
+  _evolutionType: 1
   _attackValue: 100
   _currentHP: 100
   _viewRaderCircle: 0
@@ -175,6 +176,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.82, y: 2.08}
+  m_Offset: {x: -0.3, y: 0}
+  m_Size: {x: 0.76, y: 2.08}
   m_Direction: 0
