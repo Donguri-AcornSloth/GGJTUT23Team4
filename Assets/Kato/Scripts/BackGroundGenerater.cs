@@ -27,6 +27,8 @@ public class BackGroundGenerater : BackGroundBase, IInitialize
     private List<GameObject> caustics;
 
     private float BGChangeTimes;
+    private float causticTimeCount;
+    private Transform player;
 
     public void Initialize()
     {
@@ -41,6 +43,18 @@ public class BackGroundGenerater : BackGroundBase, IInitialize
         colorGrading.saturation.value = BGGM.BGGMRows[0].saturation;
         colorGrading.colorFilter.value = BGGM.BGGMRows[0].colorFilter;
         depthOfField.focusDistance.value = BGGM.BGGMRows[0].focusDistance;
+        causticTimeCount = 0;
+        player = GameObject.Find("Player").GetComponent<Transform>();
+        if (caustics.Count > 0)
+        {
+            foreach (var f in caustics)
+            {
+                if (f != null)
+                    Destroy(f);
+            }
+
+            caustics.Clear();
+        }
     }
 
     // Start is called before the first frame update
@@ -63,8 +77,13 @@ public class BackGroundGenerater : BackGroundBase, IInitialize
         //    BGChanging = true;
         //    _BGC = true;
         //}
+        if (PlayerEvolution.Instance.Level >= 3)
+        {
+            if (causticTimeCount < BGGM.BGGMRows[PlayerEvolution.Instance.Level - 1].causticGenerateTime) causticTimeCount += Time.deltaTime;
+            else Caustics();
+        }
+
         BGGenerate();
-        Caustics();
     }
 
     //private void BackGroundGenerate(int level)
@@ -92,6 +111,7 @@ public class BackGroundGenerater : BackGroundBase, IInitialize
     //背景の生成メソッド
     private void BGGenerate()
     {
+        if (GameManager.Instance.CurrentState != GameManager.StateEnum.Play) return;
         if (!BGChanging) BGChangeTimes = 0;
         if (BGChanging)
         {
@@ -118,14 +138,16 @@ public class BackGroundGenerater : BackGroundBase, IInitialize
 
     private void Caustics()
     {
-        if(PlayerEvolution.Instance.Level == 3)
+        if (causticTimeCount > BGGM.BGGMRows[PlayerEvolution.Instance.Level - 1].causticGenerateTime)
         {
             int r = Random.Range(0, BGGM.BGGMRows[PlayerEvolution.Instance.Level - 1].BGLists.Count);
             var rot = Random.Range(0.0f, 360.0f);
             GameObject caustic = Instantiate(BGGM.BGGMRows[PlayerEvolution.Instance.Level - 1].BGLists[0].List[r]);
             caustic.transform.rotation = Quaternion.Euler(0, 0, rot);
+            caustic.transform.position = player.position;
             caustic.transform.localPosition += new Vector3(5.0f, 0.0f, 0.0f);
             caustics.Add(caustic);
+            causticTimeCount = 0f;
         }
     }
 }
