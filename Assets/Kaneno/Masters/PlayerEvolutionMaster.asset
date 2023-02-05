@@ -17,7 +17,7 @@ MonoBehaviour:
   - _name: "1\u6BB5\u968E\u76EE"
     _id: 1
     _type: 0
-    _attackValue: 100
+    _attackValue: 0
     _hitPoint: 500
     _nextFeedPoint: 100
     _movementSpeed: 1
