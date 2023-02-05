@@ -23,6 +23,9 @@ public class BackGroundGenerater : BackGroundBase, IInitialize
     private ColorGrading colorGrading;
     private DepthOfField depthOfField;
 
+    [SerializeField]
+    private List<GameObject> caustics;
+
     private float BGChangeTimes;
 
     public void Initialize()
@@ -61,6 +64,7 @@ public class BackGroundGenerater : BackGroundBase, IInitialize
         //    _BGC = true;
         //}
         BGGenerate();
+        Caustics();
     }
 
     //private void BackGroundGenerate(int level)
@@ -109,6 +113,19 @@ public class BackGroundGenerater : BackGroundBase, IInitialize
             //{
             //    cam.backgroundColor += color / BGChangeTime;
             //}
+        }
+    }
+
+    private void Caustics()
+    {
+        if(PlayerEvolution.Instance.Level == 3)
+        {
+            int r = Random.Range(0, BGGM.BGGMRows[PlayerEvolution.Instance.Level - 1].BGLists.Count);
+            var rot = Random.Range(0.0f, 360.0f);
+            GameObject caustic = Instantiate(BGGM.BGGMRows[PlayerEvolution.Instance.Level - 1].BGLists[0].List[r]);
+            caustic.transform.rotation = Quaternion.Euler(0, 0, rot);
+            caustic.transform.localPosition += new Vector3(5.0f, 0.0f, 0.0f);
+            caustics.Add(caustic);
         }
     }
 }
