@@ -20,3 +20,4 @@ MonoBehaviour:
   saturation: 0
   colorFilter: {r: 1, g: 1, b: 1, a: 0}
   focusDistance: 10
+  causticGenerateTime: 5
