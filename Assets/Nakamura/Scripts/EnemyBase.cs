@@ -144,7 +144,9 @@ public class EnemyBase : MonoBehaviour
                 break;
             case StateEnum.Dead:
                 {
-
+                    GameManager.Instance.EnemyGenerator.ObjectRemove(this);
+                    Debug.Log("エネミーを破棄");
+                    Destroy(gameObject);
                 }
                 break;
         }
