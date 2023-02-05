@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ba2dab0183a98c4997fb79f988e1a38, type: 3}
-  m_Name: CSLevel2
+  m_Name: CSLevel4
   m_EditorClassIdentifier: 
-  orthoSize: 3.2
+  orthoSize: 4.7
