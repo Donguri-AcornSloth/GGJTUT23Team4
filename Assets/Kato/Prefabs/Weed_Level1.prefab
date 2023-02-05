@@ -133,3 +133,4 @@ MonoBehaviour:
   _amplitude: 0.15
   _amplitudeRot: 15
   _speed: 0.2
+  _fadeInDuration: 2
