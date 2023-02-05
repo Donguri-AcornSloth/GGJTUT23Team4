@@ -207,7 +207,6 @@ namespace Player
         public void EatFeed(FeedBase feed)
         {
             // 肉・草の判定
-            // TODO : 後からパラメータ戻す
             switch (feed._feedType)
             {
                 case FeedBase.FeedType.肉:
@@ -221,38 +220,56 @@ namespace Player
 
             if (Percentage >= 1)
             {
-                if (Level < _master._maxLevel)
-                {
-                    // レベルアップ処理
-                    Level++;
-
-                    OnLevelChanged?.Invoke(Level);
-
-                    var rate = _feedPointCarnivorous / FeedPoint;
-                    print($"肉食の餌割合 : {rate}");
-
-                    var row = _master.GetRow(EvolutionID);
-                    for (var i = 0; i < row._nextEvolutionPaths.Length; i++)
-                    {
-                        var path = row._nextEvolutionPaths[i];
-                        if (path._carnivorousRateThreshold <= rate)
-                        {
-                            if (path._nextID <= 0) continue;
-
-                            SetEvolution(path._nextID);
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    // ステージクリア
-                    State = PlayerState.None;
-                    GameManager.Instance.ChangeState(GameManager.StateEnum.Clear);
-                }
+                LevelUp();
             }
             
             OnEatFeed?.Invoke();
+        }
+        
+        // 敵を食べる
+        public void EatEnemy()
+        {
+            _feedPointCarnivorous += 30;
+
+            if (Percentage >= 1)
+            {
+                LevelUp();
+            }
+            
+            OnEatFeed?.Invoke();
+        }
+        
+        // レベルアップ処理
+        private void LevelUp()
+        {
+            if (Level < _master._maxLevel)
+            {
+                Level++;
+
+                OnLevelChanged?.Invoke(Level);
+
+                var rate = _feedPointCarnivorous / FeedPoint;
+                print($"肉食の餌割合 : {rate}");
+
+                var row = _master.GetRow(EvolutionID);
+                for (var i = 0; i < row._nextEvolutionPaths.Length; i++)
+                {
+                    var path = row._nextEvolutionPaths[i];
+                    if (path._carnivorousRateThreshold <= rate)
+                    {
+                        if (path._nextID <= 0) continue;
+
+                        SetEvolution(path._nextID);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                // ステージクリア
+                State = PlayerState.None;
+                GameManager.Instance.ChangeState(GameManager.StateEnum.Clear);
+            }
         }
 
         #endregion

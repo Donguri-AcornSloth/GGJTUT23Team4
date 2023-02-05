@@ -20,19 +20,13 @@ namespace Player
             var enemy = col.GetComponent<EnemyBase>();
             if (enemy != null)
             {
-                print($"enemy.AttackValue = {enemy.AttackValue}");
-                
                 enemy.ApplyDamage(PlayerEvolution.Instance.AttackValue);
-                PlayerEvolution.Instance.ApplyDamage(enemy.AttackValue);    
+                PlayerEvolution.Instance.ApplyDamage(enemy.AttackValue);
+
+                // 肉食なら敵を食べる
+                if (PlayerEvolution.Instance.Type != PlayerEvolution.EvolutionType.Herbivore)
+                    PlayerEvolution.Instance.EatEnemy();
             }
         }
-
-        // private void Update()
-        // {
-        //     if (Input.GetKeyDown(KeyCode.Alpha1))
-        //     {
-        //         PlayerEvolution.Instance.ApplyDamage(100000);
-        //     }
-        // }
     }
 }

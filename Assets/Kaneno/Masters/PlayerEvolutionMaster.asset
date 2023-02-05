@@ -43,7 +43,7 @@ MonoBehaviour:
   - _name: "2\u6BB5\u968E\u76EE\uFF08\u8349\u98DF\uFF09"
     _id: 3
     _type: 1
-    _attackValue: 100
+    _attackValue: 0
     _hitPoint: 500
     _nextFeedPoint: 100
     _movementSpeed: 1.2
@@ -85,7 +85,7 @@ MonoBehaviour:
   - _name: "3\u6BB5\u968E\u76EE\uFF08\u8349\u98DF\uFF09"
     _id: 6
     _type: 1
-    _attackValue: 100
+    _attackValue: 0
     _hitPoint: 500
     _nextFeedPoint: 150
     _movementSpeed: 1.5
@@ -115,7 +115,7 @@ MonoBehaviour:
   - _name: "4\u6BB5\u968E\u76EE\uFF08\u8349\u98DF\uFF09"
     _id: 9
     _type: 1
-    _attackValue: 100
+    _attackValue: 0
     _hitPoint: 500
     _nextFeedPoint: 200
     _movementSpeed: 1.7
