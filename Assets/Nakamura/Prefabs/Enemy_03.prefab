@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7983496091226709171}
   m_Layer: 6
   m_Name: Enemy_03
-  m_TagString: Untagged
+  m_TagString: Herbivore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,8 +58,6 @@ MonoBehaviour:
   _moveSpeed: 1
   _moveTime: 3
   _turnSpeed: 1
-  _chaseSpeed: 2
-  _chaseTurnSpeed: 1
   _sprite: {fileID: 7983496092094794244}
 --- !u!61 &7983496091226709164
 BoxCollider2D:

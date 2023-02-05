@@ -53,6 +53,8 @@ public class EnemyGenerator : MonoBehaviour, IInitialize
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.CurrentState != GameManager.StateEnum.Play) return;
+
         _intervalTimer.Update();
 
         if (_intervalTimer.IsTimeUp)
