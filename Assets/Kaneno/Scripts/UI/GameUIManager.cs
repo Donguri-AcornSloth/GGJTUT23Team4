@@ -13,7 +13,8 @@ namespace UI
 
         [SerializeField] private Button _startButton;
         [SerializeField] private Button[] _titleButtons;
-
+        [SerializeField] private ClearMovie _clearMovie;
+        
         private void Awake()
         {
             _startButton.onClick.AddListener(() => GameManager.Instance.ChangeState(GameManager.StateEnum.Play));
@@ -62,6 +63,9 @@ namespace UI
                     _gameUI.SetActive(false);
                     _gameOverUI.SetActive(false);
                     _clearUI.SetActive(true);
+                    
+                    _clearMovie.PlayEndRoll();
+                    
                     break;
             }
         }

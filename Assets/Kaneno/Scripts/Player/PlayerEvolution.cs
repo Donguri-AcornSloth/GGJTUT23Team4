@@ -180,6 +180,8 @@ namespace Player
             HitPointMax = row._hitPoint;
             HitPoint = row._hitPoint;
 
+            Type = row._type;
+
             OnEvolution?.Invoke(row);
         }
 
