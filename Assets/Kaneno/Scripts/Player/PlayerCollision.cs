@@ -21,7 +21,6 @@ namespace Player
                 else
                 {
                     // 第３形態以降は食べられる餌が限られる
-                    print($"第３形態以降は食べられる餌が限られる - Type = {PlayerEvolution.Instance.Type}, FeedType = {feed._feedType}");
                     switch (PlayerEvolution.Instance.Type)
                     {
                         case PlayerEvolution.EvolutionType.Carnivorous:
