@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 using UnityEngine.EventSystems;
-using UnityEditor.ShaderKeywordFilter;
 
 public class Enemy_05 : EnemyBase
 {
@@ -51,11 +49,16 @@ public class Enemy_05 : EnemyBase
         _stateManager.AddState(ActionStateEnum.Turn);
         _stateManager.AddState(ActionStateEnum.Move);
     }
+    protected override void OnStateTurnExit()
+    {
+        _moveDirection = transform.up;
+        _moveDirection.Normalize();
+    }
     protected override void OnStateMoveEnter()
     {
         _moveTimer.ResetTimer(_moveTime);
-        _moveDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-        _moveDirection.Normalize();
+        //_moveDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+        //_moveDirection.Normalize();
     }
     protected override bool OnStateMoveUpdate()
     {
@@ -80,6 +83,7 @@ public class Enemy_05 : EnemyBase
     }
     protected override bool OnStateChaseUpdate()
     {
+        /**
         _targetPosUpdateIntervalTimer.Update();
 
         if (_targetPosUpdateIntervalTimer.IsTimeUp)
@@ -89,13 +93,16 @@ public class Enemy_05 : EnemyBase
             _moveDirection.Normalize();
             _targetPosUpdateIntervalTimer.ResetTimer(_targetPosUpdateInterval);
         }
+        **/
+        _moveDirection = _targetObj.transform.position - transform.position;
+        _moveDirection.Normalize();
         transform.rotation = Quaternion.FromToRotation(Vector3.up, _moveDirection);
         _rigidbody.velocity = _moveDirection * _chaseSpeed;
 
-        return InCircle(_player.transform.position, _raderRadius);
+        return InCircle(_player.gameObject.transform.position, _raderRadius);
     }
     protected override void OnStateChaseExit()
     {
-        _rigidbody.velocity = Vector2.zero;
+        
     }
 }
